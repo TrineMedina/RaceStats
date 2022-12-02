@@ -1,0 +1,73 @@
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: [
+    // entry point of our app
+    './src/client/index.js',
+  ],
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    filename: 'bundle.js',
+  },
+  devtool: 'eval-source-map',
+  mode: 'development',
+  devServer: {
+    static: {
+      publicPath: 'dist',
+      directory: path.resolve(__dirname, 'dist'),
+    },
+    hot: true,
+    headers: { 'Access-Control-Allow-Origin': '*' },
+
+    proxy: {
+      // '/job/**': {
+      //   target: 'http://localhost:3000/',
+      //   secure: false,
+      // },
+      // '/status/**': {
+      //   target: 'http://localhost:3000/',
+      //   secure: false,
+      // },
+      '/**': {
+        target: 'http://localhost:3000/',
+        secure: false,
+      },
+    },
+    historyApiFallback: true,
+  },
+
+  module: {
+    rules: [
+      {
+        test: /.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
+      },
+      {
+        test: /.(css|scss)$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|eot|ttf)$/,
+        loader: 'url-loader',
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/client/index.html',
+    }),
+  ],
+  resolve: {
+    // Enable importing JS / JSX files without specifying their extension
+    extensions: ['.js', '.jsx'],
+  },
+};
