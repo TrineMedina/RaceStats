@@ -3,8 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
-    // entry point of our app
-    './src/client/index.js',
+     './src/client/index.js',
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -22,15 +21,7 @@ module.exports = {
     headers: { 'Access-Control-Allow-Origin': '*' },
 
     proxy: {
-      // '/job/**': {
-      //   target: 'http://localhost:3000/',
-      //   secure: false,
-      // },
-      // '/status/**': {
-      //   target: 'http://localhost:3000/',
-      //   secure: false,
-      // },
-      '/**': {
+    '/**': {
         target: 'http://localhost:3000/',
         secure: false,
       },
