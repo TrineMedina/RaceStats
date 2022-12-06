@@ -3,7 +3,7 @@ const path = require ('path');
 
 const app = express();
 
-//Add const routers
+//Add const routes
 
 //This handles the CORS error occurring during fetch calls. For build, pass a callback
 //with an array of accepted domains instead of true
