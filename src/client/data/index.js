@@ -5,6 +5,7 @@ import RaceDistances from "./raceDistances";
 import SwimDistances from "./swimDistances";
 import BikeDistances from "./bikeDistances";
 import RunDistances from "./runDistances";
+import Years from "./years";
 
 export {
   Hours,
@@ -14,4 +15,5 @@ export {
   SwimDistances,
   BikeDistances,
   RunDistances,
+  Years,
 };

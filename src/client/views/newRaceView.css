@@ -1,4 +1,16 @@
 .MuiInputBase-root {
-    min-width: 160px;
-
+    min-width: 180px;
 }
+
+h1 {
+    color: #002B5B;
+}
+
+.mainContainer {
+    background: #8FE3CF;
+    color: #3C4048;
+    overflow: auto;
+}
+
+
+
