@@ -1,7 +1,9 @@
 const Seconds = () => {
   const seconds = [];
   for (let i = 0; i < 61; i++) {
-    seconds.push({ label: `${i}`, id: "swimSeconds" });
+    //Added conditional to ensure each number has two digits for future render purposes
+    if (i < 10) seconds.push(`0${i}`);
+    else seconds.push(`${i}`);
   }
   return seconds;
 };

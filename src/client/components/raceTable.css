@@ -1,0 +1,28 @@
+.MuiDataGrid-footerContainer {
+    background-color: #8FE3CF;
+}
+
+/*.MuiSvgIcon-root {*/
+/*    background-color: white;*/
+
+/*}*/
+
+.MuiDataGrid-sortIcon {
+    color: yellow;
+}
+
+.MuiDataGrid-columnHeadersInner {
+    color: #002B5B;
+    background-color: #8FE3CF;
+}
+
+.MuiToolbar-root {
+    font-weight: bold;
+}
+
+.MuiDataGrid-selectedRowCount {
+    color: #002B5B;
+    font-size: 14px;
+}
+
+

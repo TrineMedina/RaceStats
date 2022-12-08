@@ -1,28 +1,27 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require("webpack");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: [
-     './src/client/index.js',
-  ],
+  entry: ["./src/client/index.js"],
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
+    filename: "bundle.js",
   },
-  devtool: 'eval-source-map',
-  mode: 'development',
+  devtool: "eval-source-map",
+  mode: "development",
   devServer: {
     static: {
-      publicPath: 'dist',
-      directory: path.resolve(__dirname, 'dist'),
+      publicPath: "dist",
+      directory: path.resolve(__dirname, "dist"),
     },
     hot: true,
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    headers: { "Access-Control-Allow-Origin": "*" },
 
     proxy: {
-    '/**': {
-        target: 'http://localhost:3000/',
+      "/**": {
+        target: "http://localhost:3000/",
         secure: false,
       },
     },
@@ -35,30 +34,30 @@ module.exports = {
         test: /.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
       },
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(png|jpe?g|gif|svg|eot|ttf)$/,
-        loader: 'url-loader',
+        loader: "url-loader",
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/client/index.html',
+      template: "./src/client/index.html",
     }),
   ],
   resolve: {
     // Enable importing JS / JSX files without specifying their extension
-    extensions: ['.js', '.jsx'],
+    extensions: [".js", ".jsx"],
   },
 };

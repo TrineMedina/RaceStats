@@ -31,25 +31,39 @@ const AddRace = () => {
     swimHour: "",
     swimMinutes: "",
     swimSeconds: "",
+    bikeDistance: "",
+    bikeHour: "",
+    bikeMinutes: "",
+    bikeSeconds: "",
+    runDistance: "",
+    runHour: "",
+    runMinutes: "",
+    runSeconds: "",
   });
 
   const hours = Hours();
   const minutes = Minutes();
   const seconds = Seconds();
+  const regExForId = /^[^-]*/;
 
   const handleChange = (event, value) => {
+    // console.log(regExForId.exec(event.target.id));
+    console.log(event.target, value);
     let [newValue, id] = "";
     if (!value) {
       newValue = event.target.value;
       id = event.target.id;
     } else {
-      newValue = value.label;
-      id = value.id;
+      newValue = value;
+      //AutoComplete changes the Id value in the event object. The regex
+      id = regExForId.exec(event.target.id)[0];
     }
+    console.log(`id: ${id}, value: ${newValue}`);
     setState({
       ...state,
       [id]: newValue,
     });
+    console.log("state: ", state);
   };
 
   return (
@@ -65,6 +79,7 @@ const AddRace = () => {
             <InputLabel htmlFor="raceName">Race Name</InputLabel>
             <Input
               id="raceName"
+              autoFocus={true}
               value={state.raceName}
               onChange={handleChange}
             />
@@ -84,6 +99,12 @@ const AddRace = () => {
               renderInput={(params) => (
                 <TextField {...params} label="Race Year" />
               )}
+              isOptionEqualToValue={(option, value) => {
+                return option.id === value.id;
+              }}
+              onChange={(event, value) => {
+                handleChange(event, value);
+              }}
             />
           </FormControl>
           <FormControl>
@@ -94,6 +115,12 @@ const AddRace = () => {
               renderInput={(params) => (
                 <TextField {...params} label="Race Distance" />
               )}
+              isOptionEqualToValue={(option, value) => {
+                return option.id === value.id;
+              }}
+              onChange={(event, value) => {
+                handleChange(event, value);
+              }}
             />
           </FormControl>
         </Stack>
