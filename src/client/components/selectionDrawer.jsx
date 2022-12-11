@@ -1,14 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  Button,
-  Divider,
-  Drawer,
-  IconButton,
-  Link,
-  List,
-  ListItem,
-  Toolbar,
-} from "@mui/material";
+import React from "react";
+import { Divider, Drawer, IconButton, Link, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import "./selectionDrawer.css";
@@ -19,10 +10,10 @@ const SelectionDrawer = () => {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
   const navigate = useNavigate();
 
   const handleButtonClick = (event) => {
-    console.log(event.target);
     navigate(event.target.id);
   };
 
@@ -30,7 +21,7 @@ const SelectionDrawer = () => {
     { id: "compareRaces", action: "Compare Races" },
     { id: "addRace", action: "Add Race" },
     { id: "deleteRace", action: "Delete Race" },
-    { id: "updateRace", actionn: "Update Race" },
+    { id: "updateRace", action: "Update Race" },
   ];
 
   const links = [];
@@ -46,7 +37,7 @@ const SelectionDrawer = () => {
           onClick={handleButtonClick}
           sx={{
             color: "#F6F5F5",
-            fontSize: 16,
+            fontSize: 20,
             m: 4,
             minWidth: "2vw",
           }}
@@ -74,7 +65,6 @@ const SelectionDrawer = () => {
       </Toolbar>
       <Drawer
         variant="temporary"
-        key={"mobile"}
         open={mobileOpen}
         onClose={handleDrawerToggle}
         modalProps={{
@@ -90,7 +80,6 @@ const SelectionDrawer = () => {
       ></Drawer>
       <Drawer
         variant="permanent"
-        key={"web"}
         sx={{
           display: { xs: "none", sm: "block" },
           "& .MuiDrawer-paper": {

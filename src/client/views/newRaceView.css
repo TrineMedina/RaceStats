@@ -1,16 +1,19 @@
-/*.MuiInputBase-root {*/
-/*    min-width: 180px;*/
-/*}*/
+/**TODO This is for adding race -> It is bad practice to edit the props of MUI elements,
+     so you need to add classnames to make these more specific and move them to the right file.*/
 
-/*h1 {*/
-/*    color: #002B5B;*/
-/*}*/
+.MuiInputBase-root {
+    min-width: 180px;
+}
 
-/*.mainContainer {*/
-/*    background: #8FE3CF;*/
-/*    color: #3C4048;*/
-/*    overflow: auto;*/
-/*}*/
+h1 {
+    color: #002B5B;
+}
+
+.mainContainer {
+    background: #8FE3CF;
+    color: #3C4048;
+    overflow: auto;
+}
 
 
 
