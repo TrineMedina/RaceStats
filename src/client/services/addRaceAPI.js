@@ -69,6 +69,9 @@ const SubmitRace = (race) => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+    })
+    .catch((err) => {
+      console.log("Error adding race to database ", err);
     });
 };
 

@@ -15,6 +15,10 @@ app.use(express.static(path.resolve(__dirname, "../dist")));
 
 app.use("/race", raceRouter);
 
+app.get("/*", (req, res) => {
+  res.redirect("/");
+});
+
 app.use("*", (req, res) => {
   res.status(404).send("Sorry - there is no such location.");
 });

@@ -1,21 +1,43 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import React, { StrictMode } from "react";
-import Chart from "./views/chartView";
-import Main from "./views/mainView";
-import NewRace from "./views/newRaceView";
+import React, { useState, createContext } from "react";
+import { Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Dashboard from "./views/dashboard";
+import AddRace from "./components/addRace";
+import SelectionDrawer from "./components/selectionDrawer";
 
-export default function App() {
+const UserContext = createContext([{}, () => {}]);
+const ItemContext = createContext([{}, () => {}]);
+
+const App = () => {
+  const navigate = useNavigate();
+
+  // TODO For future use when setting up specific user access and allowing user to select races to compare
+  // const [userId, setUserId] = useState(null);
+  // const [selectedRaces, setSelectedRaces] = useState({})
+
+  const handleAddRaceBtnClick = () => {
+    navigate("/addRace");
+  };
+  const handleSetSelectedItem = (e) => {
+    // setSelectedItem(e.target.value);
+  };
+
   return (
-    <StrictMode>
-      <Main />
-      <NewRace />
-      {/*<BrowserRouter>*/}
-      {/*  <Routes>*/}
-      {/*    <Route path="/" element={<Main />} />*/}
-      {/*    <Route path="new" element={<NewRace />} />*/}
-      {/*    <Route path="chart" element={<Chart />} />*/}
-      {/*  </Routes>*/}
-      {/*</BrowserRouter>*/}
-    </StrictMode>
+    <div className="App">
+      <SelectionDrawer />
+      {/*<UserContext.Provider value={[userId, setUserId]}>*/}
+      {/*  <ItemContext.Provider value={[selectedItem, setSelectedItem]}>*/}
+      <Routes>
+        <Route path="/*" element={<Dashboard />} />
+        {/*TODO Create login/signup */}
+        {/*<Route path="/login" element={<Login />} />*/}
+        {/*<Route path="/signup" element={<Signup />} />*/}
+        <Route path="/addRace" element={<AddRace />} />
+      </Routes>
+      {/*  </ItemContext.Provider>*/}
+      {/*</UserContext.Provider>*/}
+    </div>
   );
-}
+};
+
+export { App, UserContext, ItemContext };
