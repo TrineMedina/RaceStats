@@ -7,7 +7,7 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Stack } from "@mui/system";
+import { createTheme, Stack } from "@mui/system";
 import {
   Hours,
   Minutes,
@@ -22,6 +22,7 @@ import SubmitRace from "../services/addRaceAPI";
 import "../views/newRaceView.css";
 import { useNavigate } from "react-router-dom";
 import "./addRace.css";
+import StyledButton from "./StyledButton";
 
 const AddRace = () => {
   const navigate = useNavigate();
@@ -61,6 +62,11 @@ const AddRace = () => {
       ...state,
       [id]: newValue,
     });
+  };
+
+  const handleDoneClick = () => {
+    console.log("going home");
+    navigate("/home");
   };
 
   return (
@@ -331,16 +337,15 @@ const AddRace = () => {
           />
         </FormControl>
       </Stack>
-      <div>
-        <Button
-          variant="contained"
-          sx={{ bgcolor: "#00334E" }}
+      <div className="buttonWrapper">
+        <StyledButton
           onClick={() => {
             SubmitRace(state);
           }}
         >
           Submit
-        </Button>
+        </StyledButton>
+        <StyledButton onClick={handleDoneClick}>Done</StyledButton>
       </div>
     </div>
     // </StyledEngineProvider>

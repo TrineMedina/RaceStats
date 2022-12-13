@@ -6,10 +6,13 @@ import { parseRaceData } from "../services/parseRaceData";
 import deleteRace from "../services/deleteRaceAPI";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import AddRace from "./addRace";
+import StyledButton from "./StyledButton";
+import { useNavigate } from "react-router-dom";
 
 const RaceTable = () => {
   const [raceList, setRaceList] = useState([{ id: "initial" }]);
   const [raceTimes, setRaceTimes] = useState([]);
+  const navigate = useNavigate();
 
   const updateRaceList = async () => {
     const parsedData = await parseRaceData();
@@ -155,14 +158,21 @@ const RaceTable = () => {
         rows={raceList}
         rowsPerPageOptions={[]}
       ></DataGrid>
-      <Button onClick={AddRace}>Add Race</Button>
-      <Button
+      <StyledButton
+        onClick={() => {
+          navigate("addRace");
+        }}
+      >
+        Add Race
+      </StyledButton>
+      <StyledButton
+        variant="contained"
         onClick={() => {
           console.log("clicking compare");
         }}
       >
         Compare Races
-      </Button>
+      </StyledButton>
     </Box>
   );
 };

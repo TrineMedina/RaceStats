@@ -13,7 +13,6 @@ const deleteRace = async (raceId) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      // console.log("RETURNED DELETED FROM SERVER: ", data.race.rowCount);
       data.race.rowCount === 0 ? wasDeleted : (wasDeleted = true);
     })
     .catch((err) => {

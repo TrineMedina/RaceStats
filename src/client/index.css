@@ -1,0 +1,22 @@
+/*document.body.style.backgroundColor = "#00334E";*/
+body {
+    /*background-color: #00334E;*/
+    background-image: linear-gradient(#00334E, #145374, #EE6F57);
+    height: 100vw;
+}
+
+.dashboard {
+    background-color: transparent;
+}
+
+.mainContainer {
+    background-color: transparent;
+}
+
+.MuiDataGrid-root {
+    background-color: transparent;
+    margin: 0px;
+}
+
+
+

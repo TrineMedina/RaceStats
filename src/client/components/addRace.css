@@ -1,6 +1,89 @@
 .mainContainer {
-    padding-left: 20vw;
+    /*padding-left: 20vw;*/
     color: #145374;
-    background-color: #F6F5F5;
+    background-color: #EE6F57;
     font-size: 16px;
+    align-content: center;
+    align-itmes: center;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.buttonWrapper {
+    width: 560px;
+    margin: auto;
+    overflow: hidden;
+    margin: auto;
+}
+
+.MuiInputBase-root {
+    min-width: 140px;
+    background-color: #F6F5F5;
+    padding: 10px;
+    overflow: hidden;
+    border-radius: 5px;
+    border: 2px;
+}
+
+.MuiStack-root {
+    background-color: #F6F5F5;
+    border: 1px solid black;
+    width: 560px;
+    margin: auto;
+    padding: 12px 8px;
+    border-radius: 5px;
+}
+
+/*MuiInputLabel-root MuiInputLabel-formControl, MuiInputLabel-animated, MuiInputLabel-outlined, MuiFormLabel-colorPrimary, MuiInputLabel-root, */
+/*MuiInputLabel-formControl, MuiInputLabel-animated, MuiInputLabel-outlined, css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root*/
+/*.MuiInputLabel-root {*/
+/*    color: red;*/
+/*}*/
+
+/*.MuiInputLabel-formControl {*/
+/*    color: red*/
+/*}*/
+
+/*.MuiInputLabel-animated {*/
+/*    color: red;*/
+/*}*/
+
+/*.MuiInputLabel-outlined {*/
+/*    color: red;*/
+/*}*/
+
+/*.MuiFocused {*/
+/*    color: red;*/
+/*}*/
+
+/*.MuiFormLabel-root-MuiInputLabel-root.MuiFocused {*/
+/*    color: yellow*/
+/*}*/
+
+h1 {
+    padding-bottom: 4px;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    font-family: "Andale Mono"
+}
+
+h1::after {
+    background: #EE6F57;
+    background: linear-gradient(to right, transparent 0%, #EE6F57 50%, transparent 100%);
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 7px;
+    width: 80%;
+    padding-left: 14vw;
+    /*margin: auto;*/
+}
+
+.mainContainer {
+    background: #00334E;
+    color: #F6F5F5;
+    overflow: auto;
 }
