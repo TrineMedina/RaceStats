@@ -18,10 +18,9 @@ raceController.addRace = async (req, res, next) => {
     run_seconds,
   } = req.body;
 
-  console.log("adding race: ", req.body);
+  // console.log("adding race: ", req.body);
   const query = `INSERT INTO races (race_year, race_name, race_distance, swim_distance, swim_time, swim_seconds,
-                                    bike_distance,
-                                    bike_time, bike_seconds, run_distance, run_time, run_seconds)
+                                    bike_distance, bike_time, bike_seconds, run_distance, run_time, run_seconds)
                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`;
 
   const parameters = [
@@ -38,11 +37,10 @@ raceController.addRace = async (req, res, next) => {
     run_time,
     +run_seconds,
   ];
-  console.log(parameters);
   await db
     .query(query, parameters)
     .then((data) => {
-      res.locals = data;
+      res.locals.race = data;
       return next();
     })
     .catch((err) => {
@@ -57,7 +55,28 @@ raceController.addRace = async (req, res, next) => {
 
 raceController.editRace = async (req, res, next) => {};
 
-raceController.deleteRace = async (req, res, next) => {};
+raceController.deleteRace = async (req, res, next) => {
+  const { id } = req.body;
+
+  const query = `DELETE
+                 FROM races
+                 WHERE id = '${id}' RETURNING *`;
+
+  db.query(query)
+    .then((data) => {
+      console.log("Race deleted: ", data);
+      res.locals.race = data;
+      return next();
+    })
+    .catch((err) => {
+      next({
+        log: `An error occurred in raceController deleteRace: ${err}`,
+        message: {
+          err: "An error occurred when deleting a race from the database -> raceController.deleteRace",
+        },
+      });
+    });
+};
 
 raceController.getRaces = async (req, res, next) => {
   const query = "SELECT * FROM races";

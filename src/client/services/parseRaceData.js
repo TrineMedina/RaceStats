@@ -24,7 +24,7 @@ const parseRaceData = async () => {
     } = race;
 
     racesForTable.push({
-      id,
+      id: `${id}`,
       race_name,
       race_year,
       race_distance,

@@ -1,15 +1,35 @@
+h3 {
+    padding-bottom: 4px;
+    position: relative;
+    text-decoration: none;
+}
+
+h3::after {
+    background: #EE6F57;
+    background: linear-gradient(to right, transparent 0%, #EE6F57 50%, transparent 100%);
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 7px;
+    width: 80%;
+    padding-left: 14vw;
+}
+
 .MuiDataGrid-footerContainer {
-    background-color: #F6F5F5;
+    background-color: #EE6F57;
 }
 
 .MuiBox-root {
     padding-left: 4vw;
     min-width: 1000px;
     max-width: 1500px;
+    background: #00334E;
 }
 
 .MuiSvgIcon-root {
-    color: #145374;
+    /*color: #145374;*/
+    color: #F6F5F5;
 }
 
 .PrivateSwitchBase-input {
@@ -28,16 +48,16 @@
     /*background: white;*/
 }
 
-/*.MuiTouchRipple-root {*/
-/*    border: 1px solid red;*/
-/*}*/
-.MuiDataGrid-sortIcon {
-    color: yellow;
+.MuiTablePagination-displayedRows {
+    color: #F6F5F5;
+    font-weight: bold;
 }
 
 .MuiDataGrid-columnHeadersInner {
     color: #00334E;
-    background-color: #F6F5F5;
+    background-color: #EE6F57;
+    font-size: 18px;
+    font-weight: bolder;
 }
 
 .MuiToolbar-root {

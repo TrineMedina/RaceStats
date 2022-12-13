@@ -3,7 +3,7 @@ import ReactDom from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import { App } from "./App";
 
-document.body.style.backgroundColor = "#F6F5F5";
+document.body.style.backgroundColor = "#00334E";
 
 ReactDom.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
