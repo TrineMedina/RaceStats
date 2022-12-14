@@ -7,10 +7,10 @@ const Dashboard = () => {
     <Box
       className="dashboard"
       component="main"
-      sx={{
-        flexGrow: 1,
-        pl: "4vw",
-      }}
+      // sx={{
+      //   flexGrow: 1,
+      //   pl: "4vw",
+      // }}
     >
       <RaceTable />
     </Box>

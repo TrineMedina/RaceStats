@@ -1,5 +1,6 @@
 .mainContainer {
     /*padding-left: 20vw;*/
+    top: 3vw;
     color: #145374;
     background-color: #EE6F57;
     font-size: 16px;
@@ -35,38 +36,11 @@
     border-radius: 5px;
 }
 
-/*MuiInputLabel-root MuiInputLabel-formControl, MuiInputLabel-animated, MuiInputLabel-outlined, MuiFormLabel-colorPrimary, MuiInputLabel-root, */
-/*MuiInputLabel-formControl, MuiInputLabel-animated, MuiInputLabel-outlined, css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root*/
-/*.MuiInputLabel-root {*/
-/*    color: red;*/
-/*}*/
-
-/*.MuiInputLabel-formControl {*/
-/*    color: red*/
-/*}*/
-
-/*.MuiInputLabel-animated {*/
-/*    color: red;*/
-/*}*/
-
-/*.MuiInputLabel-outlined {*/
-/*    color: red;*/
-/*}*/
-
-/*.MuiFocused {*/
-/*    color: red;*/
-/*}*/
-
-/*.MuiFormLabel-root-MuiInputLabel-root.MuiFocused {*/
-/*    color: yellow*/
-/*}*/
-
 h1 {
-    padding-bottom: 4px;
+    padding: 2vw 0 10px 0;
     position: relative;
     text-decoration: none;
     text-align: center;
-    font-family: "Andale Mono"
 }
 
 h1::after {

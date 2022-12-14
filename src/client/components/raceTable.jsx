@@ -33,6 +33,17 @@ const RaceTable = () => {
     }
   };
 
+  const handleEditButton = (event) => {
+    if (!event.target) {
+      //Double check what to check for here. Should check for none or more than one
+      alert("Please select one race to edit.");
+    } else {
+      navigate(""); //TODO Navigate to addRace (maybe rename this component). Pass, the state as the second argument
+      //"/path", {state: {raceList[id]} -> I think this will work. Then you need to update the state with the passed values
+      //of the race to be edited.
+    }
+  };
+
   const columns = [
     { field: "id", headerName: "id", hide: true },
     {
@@ -118,15 +129,7 @@ const RaceTable = () => {
   ];
 
   return (
-    <Box
-      key={"raceBox"}
-      sx={{
-        ml: 10,
-        width: "80vw",
-        height: "45vw",
-        background: "#00334E",
-      }}
-    >
+    <Box key={"raceBox"} className="raceBox">
       <Typography
         variant="h3"
         sx={{
@@ -159,6 +162,14 @@ const RaceTable = () => {
         rowsPerPageOptions={[]}
       ></DataGrid>
       <StyledButton
+        variant="contained"
+        onClick={() => {
+          console.log("clicking compare");
+        }}
+      >
+        Compare Races
+      </StyledButton>
+      <StyledButton
         onClick={() => {
           navigate("addRace");
         }}
@@ -166,12 +177,11 @@ const RaceTable = () => {
         Add Race
       </StyledButton>
       <StyledButton
-        variant="contained"
         onClick={() => {
-          console.log("clicking compare");
+          handleEditButton();
         }}
       >
-        Compare Races
+        Edit Race
       </StyledButton>
     </Box>
   );

@@ -21,11 +21,16 @@ h3::after {
     background-color: #EE6F57;
 }
 
-.MuiBox-root {
-    /*padding-left: 4vw;*/
-    min-width: 50vw;
-    max-width: 90vw;
-    background: #00334E;
+.MuiBox-root .raceBox {
+    position: relative;
+    top: 4vw;
+    width: 70vw;
+    height: 30vw;
+    margin: 0 auto;
+}
+
+.MuiDataGrid-root {
+    height: 70vw;
 }
 
 .MuiSvgIcon-root {

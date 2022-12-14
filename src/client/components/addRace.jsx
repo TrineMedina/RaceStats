@@ -5,6 +5,7 @@ import {
   Input,
   InputLabel,
   TextField,
+  Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { createTheme, Stack } from "@mui/system";
@@ -72,7 +73,18 @@ const AddRace = () => {
   return (
     // <StyledEngineProvider>
     <div className="mainContainer">
-      <h1>Add Race Details</h1>
+      <Typography
+        variant="h3"
+        sx={{
+          textAlign: "center",
+          mt: "3vw",
+          mb: 1,
+          color: "#F6F5F5",
+          fontWeight: "bold",
+        }}
+      >
+        Add Race
+      </Typography>
       <Stack
         spacing={1}
         direction={{ xs: "column", sm: "row" }}
