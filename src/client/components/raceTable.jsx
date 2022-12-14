@@ -11,7 +11,9 @@ import { useNavigate } from "react-router-dom";
 
 const RaceTable = () => {
   const [raceList, setRaceList] = useState([{ id: "initial" }]);
+  const [selectedRace, setSelectedRace] = useState([]);
   const [raceTimes, setRaceTimes] = useState([]);
+  const [checkbox, setCheckbox] = useState(true);
   const navigate = useNavigate();
 
   const updateRaceList = async () => {
@@ -33,14 +35,16 @@ const RaceTable = () => {
     }
   };
 
-  const handleEditButton = (event) => {
-    if (!event.target) {
-      //Double check what to check for here. Should check for none or more than one
-      alert("Please select one race to edit.");
+  const handleEditButton = () => {
+    if (selectedRace.length === 1) {
+      //TODO Add promise and resolve to ensure the list is updated after the edits?
+      const race = raceList.filter((race) => race.id === selectedRace[0]);
+      navigate("/addRace", { state: race });
     } else {
-      navigate(""); //TODO Navigate to addRace (maybe rename this component). Pass, the state as the second argument
-      //"/path", {state: {raceList[id]} -> I think this will work. Then you need to update the state with the passed values
-      //of the race to be edited.
+      //TODO Figure out how to clear the checkmarks
+      alert("Please only select one race to edit");
+      setSelectedRace([]);
+      setCheckbox(!checkbox);
     }
   };
 
@@ -155,8 +159,10 @@ const RaceTable = () => {
           padding: 0,
           minHeight: "21vw",
         }}
-        checkboxSelection={true}
-        onSelectionModelChange={(id) => console.log(id)}
+        checkboxSelection={checkbox}
+        onSelectionModelChange={(id) => {
+          setSelectedRace([...id]);
+        }}
         columns={columns}
         rows={raceList}
         rowsPerPageOptions={[]}
@@ -177,7 +183,8 @@ const RaceTable = () => {
         Add Race
       </StyledButton>
       <StyledButton
-        onClick={() => {
+        onClick={(event) => {
+          console.log(event);
           handleEditButton();
         }}
       >

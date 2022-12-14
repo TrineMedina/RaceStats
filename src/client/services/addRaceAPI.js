@@ -5,45 +5,45 @@ const SubmitRace = (race) => {
   console.log("fetching! ", race);
 
   const {
-    raceYear,
-    raceName,
-    raceDistance,
-    swimDistance,
-    bikeDistance,
-    runDistance,
+    race_year,
+    race_name,
+    race_distance,
+    swim_distance,
+    bike_distance,
+    run_distance,
   } = race;
 
-  const swimTime = concatRaceTimes(
-    race.swimHour,
-    race.swimMinutes,
-    race.swimSeconds
+  const swim_time = concatRaceTimes(
+    race.swim_hour,
+    race.swim_minutes,
+    race.swim_seconds
   );
 
-  const bikeTime = concatRaceTimes(
-    race.bikeHour,
-    race.bikeMinutes,
-    race.bikeSeconds
+  const bike_time = concatRaceTimes(
+    race.bike_hour,
+    race.bike_minutes,
+    race.bike_seconds
   );
-  const runTime = concatRaceTimes(
-    race.runHour,
-    race.runMinutes,
-    race.runSeconds
+  const run_time = concatRaceTimes(
+    race.run_hour,
+    race.run_minutes,
+    race.run_seconds
   );
 
   const swimSecondsTotal = calculateSeconds(
-    race.swimHour,
-    race.swimMinutes,
-    race.swimSeconds
+    race.swim_hour,
+    race.swim_minutes,
+    race.swim_seconds
   );
   const bikeSecondsTotal = calculateSeconds(
-    race.bikeHour,
-    race.bikeMinutes,
-    race.bikeSeconds
+    race.bike_hour,
+    race.bike_minutes,
+    race.bike_seconds
   );
   const runSecondsTotal = calculateSeconds(
-    race.runHour,
-    race.runMinutes,
-    race.runSeconds
+    race.run_hour,
+    race.run_minutes,
+    race.run_seconds
   );
 
   fetch("/race", {
@@ -52,17 +52,17 @@ const SubmitRace = (race) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      race_year: raceYear,
-      race_name: raceName,
-      race_distance: raceDistance,
-      swim_distance: swimDistance,
-      swim_time: swimTime,
+      race_year,
+      race_name,
+      race_distance,
+      swim_distance,
+      swim_time,
       swim_seconds: swimSecondsTotal,
-      bike_distance: bikeDistance,
-      bike_time: bikeTime,
+      bike_distance,
+      bike_time,
       bike_seconds: bikeSecondsTotal,
-      run_distance: runDistance,
-      run_time: runTime,
+      run_distance,
+      run_time,
       run_seconds: runSecondsTotal,
     }),
   })

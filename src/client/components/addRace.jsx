@@ -21,29 +21,61 @@ import {
 } from "../data";
 import SubmitRace from "../services/addRaceAPI";
 import "../views/newRaceView.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./addRace.css";
 import StyledButton from "./StyledButton";
+import { getHours, getMinutes, getSeconds } from "../services/parseTimeString";
 
 const AddRace = () => {
   const navigate = useNavigate();
-  const [state, setState] = useState({
-    raceYear: "",
-    raceName: "",
-    raceDistance: "",
-    swimDistance: "",
-    swimHour: "",
-    swimMinutes: "",
-    swimSeconds: "",
-    bikeDistance: "",
-    bikeHour: "",
-    bikeMinutes: "",
-    bikeSeconds: "",
-    runDistance: "",
-    runHour: "",
-    runMinutes: "",
-    runSeconds: "",
+  const location = useLocation();
+  let dataToUpdate;
+  const raceToUpdate = [];
+  const [raceData, setRaceData] = useState({
+    race_year: "",
+    race_name: "",
+    race_distance: "",
+    swim_distance: "",
+    swim_hour: "",
+    swim_minutes: "",
+    swim_seconds: "",
+    bike_distance: "",
+    bike_hour: "",
+    bike_minutes: "",
+    bike_seconds: "",
+    run_distance: "",
+    run_hour: "",
+    run_minutes: "",
+    run_seconds: "",
   });
+
+  useEffect(() => {
+    if (raceToUpdate.length > 0) setRaceData(dataToUpdate);
+  }, [raceToUpdate.length]);
+
+  if (location.state) {
+    const race = location.state[0];
+    console.log(race.id);
+    dataToUpdate = {
+      id: race.id,
+      race_year: race.race_year,
+      race_name: race.race_name,
+      race_distance: race.race_distance,
+      swim_distance: race.swim_distance,
+      swim_hour: getHours(race.swim_time),
+      swim_minutes: getMinutes(race.swim_time),
+      swim_seconds: getSeconds(race.swim_time),
+      bike_distance: race.bike_distance,
+      bike_hour: getHours(race.bike_time),
+      bike_minutes: getMinutes(race.bike_time),
+      bike_seconds: getSeconds(race.bike_time),
+      run_distance: race.bike_distance,
+      run_hour: getHours(race.run_time),
+      run_minutes: getMinutes(race.run_time),
+      run_seconds: getSeconds(race.run_time),
+    };
+    raceToUpdate.push(dataToUpdate);
+  }
 
   const hours = Hours();
   const minutes = Minutes();
@@ -59,8 +91,8 @@ const AddRace = () => {
       newValue = value;
       id = regExForId.exec(event.target.id)[0];
     }
-    setState({
-      ...state,
+    setRaceData({
+      ...raceData,
       [id]: newValue,
     });
   };
@@ -91,11 +123,11 @@ const AddRace = () => {
         sx={{ padding: 1 }}
       >
         <FormControl>
-          <InputLabel htmlFor="raceName">Race Name</InputLabel>
+          <InputLabel htmlFor="race_name">Race Name</InputLabel>
           <Input
-            id="raceName"
+            id="race_name"
             autoFocus={true}
-            value={state.raceName}
+            value={raceData.race_name}
             onChange={handleChange}
           />
         </FormControl>
@@ -108,14 +140,14 @@ const AddRace = () => {
         <FormControl>
           <Autocomplete
             fullWidth={true}
-            autoComplete={true}
-            id="raceYear"
+            value={raceData.race_year}
+            id="race_year"
             options={Years()}
             renderInput={(params) => (
               <TextField {...params} label="Race Year" />
             )}
-            isOptionEqualToValue={(option, value) => {
-              return option.id === value.id;
+            isOptionEqualToValue={(option) => {
+              return option.id === raceData.id;
             }}
             onChange={(event, value) => {
               handleChange(event, value);
@@ -125,13 +157,14 @@ const AddRace = () => {
         <FormControl>
           <Autocomplete
             fullWidth={true}
-            id="raceDistance"
+            value={raceData.race_distance}
+            id="race_distance"
             options={RaceDistances()}
             renderInput={(params) => (
               <TextField {...params} label="Race Distance" />
             )}
-            isOptionEqualToValue={(option, value) => {
-              return option.id === value.id;
+            isOptionEqualToValue={(option) => {
+              return option.id === raceData.id;
             }}
             onChange={(event, value) => {
               handleChange(event, value);
@@ -146,7 +179,8 @@ const AddRace = () => {
       >
         <FormControl>
           <Autocomplete
-            id="swimDistance"
+            id="swim_distance"
+            value={raceData.swim_distance}
             options={SwimDistances()}
             autoHighlight
             renderInput={(params) => (
@@ -162,7 +196,8 @@ const AddRace = () => {
         </FormControl>
         <FormControl>
           <Autocomplete
-            id="swimHour"
+            id="swim_hour"
+            value={raceData.swim_hour}
             options={hours}
             autoHighlight
             renderInput={(params) => (
@@ -178,7 +213,8 @@ const AddRace = () => {
         </FormControl>
         <FormControl>
           <Autocomplete
-            id="swimMinutes"
+            id="swim_minutes"
+            value={raceData.swim_minutes}
             options={minutes}
             autoHighlight
             renderInput={(params) => (
@@ -194,7 +230,8 @@ const AddRace = () => {
         </FormControl>
         <FormControl>
           <Autocomplete
-            id="swimSeconds"
+            id="swim_seconds"
+            value={raceData.swim_seconds}
             options={seconds}
             autoHighlight
             renderInput={(params) => (
@@ -217,7 +254,8 @@ const AddRace = () => {
       >
         <FormControl>
           <Autocomplete
-            id="bikeDistance"
+            id="bike_distance"
+            value={raceData.bike_distance}
             options={BikeDistances()}
             autoHighlight
             renderInput={(params) => (
@@ -233,7 +271,8 @@ const AddRace = () => {
         </FormControl>
         <FormControl>
           <Autocomplete
-            id="bikeHours"
+            id="bike_hours"
+            value={raceData.bike_hours}
             options={hours}
             autoHighlight
             renderInput={(params) => (
@@ -249,7 +288,8 @@ const AddRace = () => {
         </FormControl>
         <FormControl>
           <Autocomplete
-            id="bikeMinutes"
+            id="bike_minutes"
+            value={raceData.bike_minutes}
             options={minutes}
             autoHighlight
             renderInput={(params) => (
@@ -265,7 +305,8 @@ const AddRace = () => {
         </FormControl>
         <FormControl>
           <Autocomplete
-            id="bikeSeconds"
+            id="bike_seconds"
+            value={raceData.bike_seconds}
             options={seconds}
             autoHighlight
             renderInput={(params) => (
@@ -288,7 +329,8 @@ const AddRace = () => {
       >
         <FormControl>
           <Autocomplete
-            id="runDistance"
+            id="run_distance"
+            value={raceData.run_distance}
             options={RunDistances()}
             autoHighlight
             renderInput={(params) => <TextField {...params} label="Run - KM" />}
@@ -302,7 +344,8 @@ const AddRace = () => {
         </FormControl>
         <FormControl>
           <Autocomplete
-            id="runHours"
+            id="run_hours"
+            value={raceData.run_hours}
             options={hours}
             autoHighlight
             renderInput={(params) => (
@@ -318,7 +361,8 @@ const AddRace = () => {
         </FormControl>
         <FormControl>
           <Autocomplete
-            id="runMinutes"
+            id="run_minutes"
+            value={raceData.run_minutes}
             options={minutes}
             autoHighlight
             renderInput={(params) => (
@@ -334,7 +378,8 @@ const AddRace = () => {
         </FormControl>
         <FormControl>
           <Autocomplete
-            id="runSeconds"
+            id="run_seconds"
+            value={raceData.run_minutes}
             options={seconds}
             autoHighlight
             renderInput={(params) => (
@@ -352,7 +397,7 @@ const AddRace = () => {
       <div className="buttonWrapper">
         <StyledButton
           onClick={() => {
-            SubmitRace(state);
+            SubmitRace(raceData);
           }}
         >
           Submit
