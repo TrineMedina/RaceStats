@@ -1,6 +1,8 @@
+//TODO This isn't great - move main race form to its own component file and create two separate files
+// for adding a race and updating a race, which will then import the main race form component
+
 import {
   Autocomplete,
-  Button,
   FormControl,
   Input,
   InputLabel,
@@ -8,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { createTheme, Stack } from "@mui/system";
+import { Stack } from "@mui/system";
 import {
   Hours,
   Minutes,
@@ -20,7 +22,6 @@ import {
   RunDistances,
 } from "../data";
 import SubmitRace from "../services/addRaceAPI";
-import "../views/newRaceView.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./addRace.css";
 import StyledButton from "./StyledButton";
@@ -103,16 +104,16 @@ const AddRace = () => {
   };
 
   return (
-    // <StyledEngineProvider>
     <div className="mainContainer">
       <Typography
         variant="h3"
         sx={{
           textAlign: "center",
-          mt: "3vw",
+          mt: "4vw",
           mb: 1,
           color: "#F6F5F5",
           fontWeight: "bold",
+          fontSize: 35,
         }}
       >
         Add Race
@@ -405,7 +406,6 @@ const AddRace = () => {
         <StyledButton onClick={handleDoneClick}>Done</StyledButton>
       </div>
     </div>
-    // </StyledEngineProvider>
   );
 };
 

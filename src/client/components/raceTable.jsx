@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./raceTable.css";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import { parseRaceData } from "../services/parseRaceData";
 import deleteRace from "../services/deleteRaceAPI";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
-import AddRace from "./addRace";
 import StyledButton from "./StyledButton";
 import { useNavigate } from "react-router-dom";
 
@@ -13,9 +12,14 @@ const RaceTable = () => {
   const [raceList, setRaceList] = useState([{ id: "initial" }]);
   const [selectedRace, setSelectedRace] = useState([]);
   const [raceTimes, setRaceTimes] = useState([]);
-  const [checkbox, setCheckbox] = useState(true);
   const navigate = useNavigate();
 
+  /**
+   * This function parses the race data that's received from the server. It's needed
+   * because the objects returned have values that are only for the race table and
+   * other values that are only for the chart
+   * @returns default
+   */
   const updateRaceList = async () => {
     const parsedData = await parseRaceData();
     setRaceList(parsedData.table);
@@ -37,14 +41,12 @@ const RaceTable = () => {
 
   const handleEditButton = () => {
     if (selectedRace.length === 1) {
-      //TODO Add promise and resolve to ensure the list is updated after the edits?
+      //TODO Add promise and resolve to ensure the list is updated after the edits have been made to the database
       const race = raceList.filter((race) => race.id === selectedRace[0]);
       navigate("/addRace", { state: race });
     } else {
-      //TODO Figure out how to clear the checkmarks
+      //TODO create to customized alert popup
       alert("Please only select one race to edit");
-      setSelectedRace([]);
-      setCheckbox(!checkbox);
     }
   };
 
@@ -53,14 +55,14 @@ const RaceTable = () => {
     {
       field: "race_name",
       headerName: "Race",
-      minWidth: 100,
+      width: 100,
       headerAlign: "center",
       hideable: false,
     },
     {
       field: "race_year",
       headerName: "Year",
-      minWidth: 30,
+      width: 50,
       headerAlign: "center",
       hideable: false,
     },
@@ -69,6 +71,7 @@ const RaceTable = () => {
       headerName: "Distance",
       flex: true,
       headerAlign: "center",
+      width: 100,
       hideable: false,
     },
     {
@@ -117,7 +120,7 @@ const RaceTable = () => {
       field: "actions",
       type: "actions",
       headerName: "Delete",
-      width: 100,
+      width: 70,
       cellClassName: "actions",
       getActions: ({ id }) => {
         return [
@@ -125,7 +128,6 @@ const RaceTable = () => {
             icon={<DeleteIcon />}
             label="Delete"
             onClick={() => handleDeleteButton(id)}
-            color="inherit"
           />,
         ];
       },
@@ -142,6 +144,7 @@ const RaceTable = () => {
           mb: 1,
           color: "#F6F5F5",
           fontWeight: "bold",
+          fontSize: 35,
         }}
       >
         Your Triathlons
@@ -151,18 +154,18 @@ const RaceTable = () => {
         sx={{
           bgcolor: "#EE6F57",
           color: "#F6F5F5",
-          fontSize: 18,
+          fontSize: 12,
           textAlign: "center",
           border: "4px solid #EE6F57",
           boxShadow: 12,
           margin: 1,
           padding: 0,
-          minHeight: "21vw",
         }}
-        checkboxSelection={checkbox}
+        checkboxSelection={true}
         onSelectionModelChange={(id) => {
           setSelectedRace([...id]);
         }}
+        selectionModel={selectedRace}
         columns={columns}
         rows={raceList}
         rowsPerPageOptions={[]}
@@ -170,7 +173,9 @@ const RaceTable = () => {
       <StyledButton
         variant="contained"
         onClick={() => {
-          console.log("clicking compare");
+          console.log(
+            "clicking compare - this will navigate to chartView to compare race stats"
+          );
         }}
       >
         Compare Races

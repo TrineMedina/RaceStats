@@ -14,44 +14,18 @@ h3::after {
     height: 7px;
     width: 80%;
     padding-left: 14vw;
-    /*margin: auto;*/
-}
-
-.MuiDataGrid-footerContainer {
-    background-color: #EE6F57;
 }
 
 .MuiBox-root .raceBox {
     position: relative;
     top: 4vw;
-    width: 70vw;
+    width: 90vw;
     height: 30vw;
     margin: 0 auto;
 }
 
-.MuiDataGrid-root {
-    height: 70vw;
-}
-
 .MuiSvgIcon-root {
-    /*color: #145374;*/
     color: #F6F5F5;
-}
-
-.PrivateSwitchBase-input {
-    /*color: white;*/
-    /*background-color: white;*/
-    /*appearance: none;*/
-}
-
-.MuiButtonBase-root-MuiCheckbox-root {
-    /*color: white;*/
-    /*background: white;*/
-}
-
-.Mui-checked {
-    /*color: white;*/
-    /*background: white;*/
 }
 
 .MuiTablePagination-displayedRows {
@@ -62,7 +36,7 @@ h3::after {
 .MuiDataGrid-columnHeadersInner {
     color: #00334E;
     background-color: #EE6F57;
-    font-size: 18px;
+    font-size: 12px;
     font-weight: bolder;
 }
 

@@ -4,14 +4,7 @@ import { Box } from "@mui/material";
 
 const Dashboard = () => {
   return (
-    <Box
-      className="dashboard"
-      component="main"
-      // sx={{
-      //   flexGrow: 1,
-      //   pl: "4vw",
-      // }}
-    >
+    <Box>
       <RaceTable />
     </Box>
   );

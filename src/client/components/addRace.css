@@ -1,11 +1,7 @@
 .mainContainer {
-    /*padding-left: 20vw;*/
     top: 3vw;
     color: #145374;
     background-color: #EE6F57;
-    font-size: 16px;
-    align-content: center;
-    align-itmes: center;
     width: 80%;
     margin: auto;
     overflow: hidden;
@@ -14,8 +10,7 @@
 .buttonWrapper {
     width: 560px;
     margin: auto;
-    overflow: hidden;
-    margin: auto;
+    /*overflow: hidden;*/
 }
 
 .MuiInputBase-root {

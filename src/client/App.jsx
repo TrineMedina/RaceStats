@@ -13,7 +13,6 @@ const App = () => {
 
   return (
     <div className="App">
-      <header className="header">Login</header>
       {/*<UserContext.Provider value={[userId, setUserId]}>*/}
       {/*  <ItemContext.Provider value={[selectedItem, setSelectedItem]}>*/}
       <Routes>
