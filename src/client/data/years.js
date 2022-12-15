@@ -1,4 +1,4 @@
-const Years = () => {
+const years = () => {
   const thisYear = new Date().getFullYear();
   const years = [];
 
@@ -8,4 +8,4 @@ const Years = () => {
   return years;
 };
 
-export default Years;
+export default years;

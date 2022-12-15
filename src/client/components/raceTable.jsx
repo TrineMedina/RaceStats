@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./raceTable.css";
 import { Box, Typography } from "@mui/material";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
-import { parseRaceData } from "../services/parseRaceData";
+import parseRaceData from "../services/parseRaceData";
 import deleteRace from "../services/deleteRaceAPI";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import StyledButton from "./StyledButton";

@@ -1,4 +1,4 @@
-const Seconds = () => {
+const getSecondsList = () => {
   const seconds = [];
   for (let i = 0; i < 61; i++) {
     //Added conditional to ensure each number has two digits for future render purposes
@@ -8,4 +8,4 @@ const Seconds = () => {
   return seconds;
 };
 
-export default Seconds;
+export default getSecondsList;

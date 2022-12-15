@@ -1,4 +1,4 @@
-const Hours = () => {
+const getHoursList = () => {
   const hours = [];
   for (let i = 0; i < 25; i++) {
     //Added conditional to ensure each number has two digits for future render purposes
@@ -8,4 +8,4 @@ const Hours = () => {
   return hours;
 };
 
-export default Hours;
+export default getHoursList;

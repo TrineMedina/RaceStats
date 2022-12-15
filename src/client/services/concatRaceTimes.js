@@ -1,4 +1,4 @@
-const ConcatRaceTimes = (hh, mm, ss) => {
+const concatRaceTimes = (hh, mm, ss) => {
   !hh ? (hh = "00") : hh;
   !mm ? (mm = "00") : mm;
   !ss ? (ss = "00") : ss;
@@ -6,4 +6,4 @@ const ConcatRaceTimes = (hh, mm, ss) => {
   return `${hh}:${mm}:${ss}`;
 };
 
-export default ConcatRaceTimes;
+export default concatRaceTimes;

@@ -7,9 +7,8 @@ const UserContext = createContext([{}, () => {}]);
 const ItemContext = createContext([{}, () => {}]);
 
 const App = () => {
-  // TODO For future use when setting up specific user access and allowing user to select races to compare
+  // TODO For future use when setting up specific user access
   // const [userId, setUserId] = useState(null);
-  // const [selectedRaces, setSelectedRaces] = useState({})
 
   return (
     <div className="App">

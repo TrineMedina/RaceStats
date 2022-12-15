@@ -1,4 +1,4 @@
-const Minutes = () => {
+const getMinutesList = () => {
   const minutes = [];
   for (let i = 0; i < 60; i++) {
     //Added conditional to ensure each number has two digits for future render purposes
@@ -8,4 +8,4 @@ const Minutes = () => {
   return minutes;
 };
 
-export default Minutes;
+export default getMinutesList;

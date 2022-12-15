@@ -12,16 +12,16 @@ import {
 import React, { useEffect, useState } from "react";
 import { Stack } from "@mui/system";
 import {
-  Hours,
-  Minutes,
-  Seconds,
-  Years,
-  RaceDistances,
-  SwimDistances,
-  BikeDistances,
-  RunDistances,
+  getHoursList,
+  getMinutesList,
+  getSecondsList,
+  years,
+  raceDistances,
+  swimDistances,
+  bikeDistances,
+  runDistances,
 } from "../data";
-import SubmitRace from "../services/addRaceAPI";
+import submitRace from "../services/addRaceAPI";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./addRace.css";
 import StyledButton from "./StyledButton";
@@ -78,9 +78,9 @@ const AddRace = () => {
     raceToUpdate.push(dataToUpdate);
   }
 
-  const hours = Hours();
-  const minutes = Minutes();
-  const seconds = Seconds();
+  const hours = getHoursList();
+  const minutes = getMinutesList();
+  const seconds = getSecondsList();
   const regExForId = /^[^-]*/;
 
   const handleChange = (event, value) => {
@@ -98,7 +98,7 @@ const AddRace = () => {
     });
   };
 
-  const handleDoneClick = () => {
+  const handleExitClick = () => {
     console.log("going home");
     navigate("/home");
   };
@@ -129,6 +129,7 @@ const AddRace = () => {
             id="race_name"
             autoFocus={true}
             value={raceData.race_name}
+            required={true}
             onChange={handleChange}
           />
         </FormControl>
@@ -143,7 +144,7 @@ const AddRace = () => {
             fullWidth={true}
             value={raceData.race_year}
             id="race_year"
-            options={Years()}
+            options={years()}
             renderInput={(params) => (
               <TextField {...params} label="Race Year" />
             )}
@@ -160,7 +161,7 @@ const AddRace = () => {
             fullWidth={true}
             value={raceData.race_distance}
             id="race_distance"
-            options={RaceDistances()}
+            options={raceDistances()}
             renderInput={(params) => (
               <TextField {...params} label="Race Distance" />
             )}
@@ -182,7 +183,7 @@ const AddRace = () => {
           <Autocomplete
             id="swim_distance"
             value={raceData.swim_distance}
-            options={SwimDistances()}
+            options={swimDistances()}
             autoHighlight
             renderInput={(params) => (
               <TextField {...params} label="Swim - Meters" />
@@ -202,7 +203,7 @@ const AddRace = () => {
             options={hours}
             autoHighlight
             renderInput={(params) => (
-              <TextField {...params} label="Swim - Hours" />
+              <TextField {...params} label="Swim - hours" />
             )}
             isOptionEqualToValue={(option, value) => {
               return option.id === value.id;
@@ -219,7 +220,7 @@ const AddRace = () => {
             options={minutes}
             autoHighlight
             renderInput={(params) => (
-              <TextField {...params} label="Swim - Minutes" />
+              <TextField {...params} label="Swim - minutes" />
             )}
             isOptionEqualToValue={(option, value) => {
               return option.id === value.id;
@@ -236,7 +237,7 @@ const AddRace = () => {
             options={seconds}
             autoHighlight
             renderInput={(params) => (
-              <TextField {...params} label="Swim - Seconds" />
+              <TextField {...params} label="Swim - seconds" />
             )}
             isOptionEqualToValue={(option, value) => {
               return option.id === value.id;
@@ -257,7 +258,7 @@ const AddRace = () => {
           <Autocomplete
             id="bike_distance"
             value={raceData.bike_distance}
-            options={BikeDistances()}
+            options={bikeDistances()}
             autoHighlight
             renderInput={(params) => (
               <TextField {...params} label="Bike - KM" />
@@ -277,7 +278,7 @@ const AddRace = () => {
             options={hours}
             autoHighlight
             renderInput={(params) => (
-              <TextField {...params} label="Bike - Hours" />
+              <TextField {...params} label="Bike - hours" />
             )}
             isOptionEqualToValue={(option, value) => {
               return option.id === value.id;
@@ -294,7 +295,7 @@ const AddRace = () => {
             options={minutes}
             autoHighlight
             renderInput={(params) => (
-              <TextField {...params} label="Bike - Minutes" />
+              <TextField {...params} label="Bike - minutes" />
             )}
             isOptionEqualToValue={(option, value) => {
               return option.id === value.id;
@@ -311,7 +312,7 @@ const AddRace = () => {
             options={seconds}
             autoHighlight
             renderInput={(params) => (
-              <TextField {...params} label="Bike - Seconds" />
+              <TextField {...params} label="Bike - seconds" />
             )}
             isOptionEqualToValue={(option, value) => {
               return option.id === value.id;
@@ -332,7 +333,7 @@ const AddRace = () => {
           <Autocomplete
             id="run_distance"
             value={raceData.run_distance}
-            options={RunDistances()}
+            options={runDistances()}
             autoHighlight
             renderInput={(params) => <TextField {...params} label="Run - KM" />}
             isOptionEqualToValue={(option, value) => {
@@ -350,7 +351,7 @@ const AddRace = () => {
             options={hours}
             autoHighlight
             renderInput={(params) => (
-              <TextField {...params} label="Run - Hours" />
+              <TextField {...params} label="Run - hours" />
             )}
             isOptionEqualToValue={(option, value) => {
               return option.id === value.id;
@@ -367,7 +368,7 @@ const AddRace = () => {
             options={minutes}
             autoHighlight
             renderInput={(params) => (
-              <TextField {...params} label="Run - Minutes" />
+              <TextField {...params} label="Run - minutes" />
             )}
             isOptionEqualToValue={(option, value) => {
               return option.id === value.id;
@@ -384,7 +385,7 @@ const AddRace = () => {
             options={seconds}
             autoHighlight
             renderInput={(params) => (
-              <TextField {...params} label="Run - Seconds" />
+              <TextField {...params} label="Run - seconds" />
             )}
             isOptionEqualToValue={(option, value) => {
               return option.id === value.id;
@@ -398,12 +399,12 @@ const AddRace = () => {
       <div className="buttonWrapper">
         <StyledButton
           onClick={() => {
-            SubmitRace(raceData);
+            submitRace(raceData);
           }}
         >
           Submit
         </StyledButton>
-        <StyledButton onClick={handleDoneClick}>Done</StyledButton>
+        <StyledButton onClick={handleExitClick}>Exit</StyledButton>
       </div>
     </div>
   );

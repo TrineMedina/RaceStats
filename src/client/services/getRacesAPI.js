@@ -14,4 +14,4 @@ const getRaces = async () => {
   return allRaces;
 };
 
-export { getRaces };
+export default getRaces;

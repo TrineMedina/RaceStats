@@ -1,3 +1,5 @@
+//TODO use this for chart view. If not, delete.
+
 import { useState } from "react";
 
 const useModal = () => {

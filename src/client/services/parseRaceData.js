@@ -1,4 +1,4 @@
-import { getRaces } from "./getRacesAPI";
+import getRaces from "./getRacesAPI";
 
 const parseRaceData = async () => {
   const racesForTable = [];
@@ -42,4 +42,4 @@ const parseRaceData = async () => {
   return { table: racesForTable, chart: raceDataForChart };
 };
 
-export { parseRaceData };
+export default parseRaceData;

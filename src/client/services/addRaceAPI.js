@@ -1,7 +1,7 @@
 import calculateSeconds from "./calculateSeconds";
 import concatRaceTimes from "./concatRaceTimes";
 
-const SubmitRace = (race) => {
+const submitRace = (race) => {
   console.log("fetching! ", race);
 
   const {
@@ -75,4 +75,4 @@ const SubmitRace = (race) => {
     });
 };
 
-export default SubmitRace;
+export default submitRace;
