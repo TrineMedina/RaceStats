@@ -1,6 +1,3 @@
-//TODO This isn't great - move main race form to its own component file and create two separate files
-// for adding a race and updating a race, which will then import the main race form component
-
 import {
   Autocomplete,
   FormControl,
@@ -22,6 +19,7 @@ import {
   runDistances,
 } from "../data";
 import submitRace from "../services/addRaceAPI";
+import editRace from "../services/editRaceAPI";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./addRace.css";
 import StyledButton from "./StyledButton";
@@ -30,6 +28,7 @@ import { getHours, getMinutes, getSeconds } from "../services/parseTimeString";
 const AddRace = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  let isNewRace = true;
   let dataToUpdate;
   const raceToUpdate = [];
   const [raceData, setRaceData] = useState({
@@ -56,6 +55,7 @@ const AddRace = () => {
 
   if (location.state) {
     const race = location.state[0];
+    isNewRace = false;
     console.log(race.id);
     dataToUpdate = {
       id: race.id,
@@ -274,7 +274,7 @@ const AddRace = () => {
         <FormControl>
           <Autocomplete
             id="bike_hours"
-            value={raceData.bike_hours}
+            value={raceData.bike_hour}
             options={hours}
             autoHighlight
             renderInput={(params) => (
@@ -347,7 +347,7 @@ const AddRace = () => {
         <FormControl>
           <Autocomplete
             id="run_hours"
-            value={raceData.run_hours}
+            value={raceData.run_hour}
             options={hours}
             autoHighlight
             renderInput={(params) => (
@@ -398,11 +398,20 @@ const AddRace = () => {
       </Stack>
       <div className="buttonWrapper">
         <StyledButton
+          hidden={!isNewRace}
           onClick={() => {
             submitRace(raceData);
           }}
         >
-          Submit
+          Add Race
+        </StyledButton>
+        <StyledButton
+          hidden={isNewRace}
+          onClick={() => {
+            editRace(raceData);
+          }}
+        >
+          Edit Race
         </StyledButton>
         <StyledButton onClick={handleExitClick}>Exit</StyledButton>
       </div>

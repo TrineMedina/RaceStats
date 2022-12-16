@@ -11,6 +11,10 @@ router.post("/", raceController.addRace, (req, res) => {
   return res.status(200).json(res.locals.race);
 });
 
+router.patch("/", raceController.editRace, (req, res) => {
+  return res.status(200).json(res.locals.race);
+});
+
 router.delete("/", raceController.deleteRace, (req, res) => {
   return res.status(200).json(res.locals);
 });

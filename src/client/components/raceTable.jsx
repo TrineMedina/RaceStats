@@ -182,7 +182,7 @@ const RaceTable = () => {
       </StyledButton>
       <StyledButton
         onClick={() => {
-          navigate("addRace");
+          navigate("AddRace");
         }}
       >
         Add Race

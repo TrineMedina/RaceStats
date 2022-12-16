@@ -5,9 +5,7 @@
 ## Todo Notes
 
 - Complete update functionality, incl. updating state after confirmed db write
-- Add required to Autocomplete -> this will ensure fields are completed for new races
-- Split addRace into race, addRace and editRace components
-- Move creation of body for API call to its own file to be called in addRaceAPI and updateRaceAPI
+- Add checks to ensure all race data has been entered
 - Look at DataGrid footer -> remove < >
 - Add integration and e2e testing for CRUD functionality
 - Start working on chart / compare races view

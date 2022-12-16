@@ -53,7 +53,46 @@ raceController.addRace = async (req, res, next) => {
     });
 };
 
-raceController.editRace = async (req, res, next) => {};
+raceController.editRace = async (req, res, next) => {
+  const {
+    id,
+    race_year,
+    race_name,
+    race_distance,
+    swim_distance,
+    swim_time,
+    swim_seconds,
+    bike_distance,
+    bike_time,
+    bike_seconds,
+    run_distance,
+    run_time,
+    run_seconds,
+  } = req.body;
+
+  const query = ``;
+
+  const parameters = [
+    race_year,
+    race_name,
+    race_distance,
+    swim_distance,
+    swim_time,
+    +swim_seconds,
+    bike_distance,
+    bike_time,
+    +bike_seconds,
+    run_distance,
+    run_time,
+    +run_seconds,
+    id,
+  ];
+
+  db.query(query, parameters).then((data) => {
+    console.log("race updated: ", data);
+    next();
+  });
+};
 
 raceController.deleteRace = async (req, res, next) => {
   const { id } = req.body;
