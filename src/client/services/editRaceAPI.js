@@ -72,7 +72,13 @@ const editRace = (race) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      if (!data) {
+        alert("The race was not updated");
+        return false;
+      } else {
+        alert("The race was successfully updated");
+        return true;
+      }
     })
     .catch((err) => {
       console.log("Error adding race to database ", err);

@@ -55,7 +55,6 @@ raceController.addRace = async (req, res, next) => {
 
 raceController.editRace = async (req, res, next) => {
   const {
-    id,
     race_year,
     race_name,
     race_distance,
@@ -68,9 +67,23 @@ raceController.editRace = async (req, res, next) => {
     run_distance,
     run_time,
     run_seconds,
+    id,
   } = req.body;
 
-  const query = ``;
+  const query = `UPDATE races
+                 SET race_year     = $1,
+                     race_name     = $2,
+                     race_distance = $3,
+                     swim_distance = $4,
+                     swim_time     = $5,
+                     swim_seconds  = $6,
+                     bike_distance = $7,
+                     bike_time     = $8,
+                     bike_seconds  = $9,
+                     run_distance  = $10,
+                     run_time      = $11,
+                     run_seconds   = $12
+                 WHERE id = $13 RETURNING *`;
 
   const parameters = [
     race_year,
@@ -85,13 +98,26 @@ raceController.editRace = async (req, res, next) => {
     run_distance,
     run_time,
     +run_seconds,
-    id,
+    +id,
   ];
 
-  db.query(query, parameters).then((data) => {
-    console.log("race updated: ", data);
-    next();
-  });
+  db.query(query, parameters)
+    .then((data) => {
+      if (data.rowCount === 1) {
+        res.locals.race = data.rows;
+      } else {
+        res.locals.race = false;
+      }
+      next();
+    })
+    .catch((err) => {
+      next({
+        log: `An error occurred in raceController updateRace: ${err}`,
+        message: {
+          err: "An error occurred when updating a race in the database -> raceController.updateRace",
+        },
+      });
+    });
 };
 
 raceController.deleteRace = async (req, res, next) => {
@@ -104,7 +130,7 @@ raceController.deleteRace = async (req, res, next) => {
   db.query(query)
     .then((data) => {
       console.log("Race deleted: ", data);
-      res.locals.race = data;
+      res.locals.race = data.rows;
       return next();
     })
     .catch((err) => {
