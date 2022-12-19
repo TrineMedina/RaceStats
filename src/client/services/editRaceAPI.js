@@ -1,7 +1,7 @@
 import calculateSeconds from "./calculateSeconds";
 import concatRaceTimes from "./concatRaceTimes";
 
-const editRace = (race) => {
+const editRace = async (race) => {
   console.log("editing! ", race);
 
   const {
@@ -49,7 +49,7 @@ const editRace = (race) => {
 
   console.log("race body: ", race);
 
-  fetch("/race", {
+  await fetch("/race", {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

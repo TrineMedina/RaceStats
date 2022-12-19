@@ -408,7 +408,10 @@ const AddRace = () => {
         <StyledButton
           hidden={isNewRace}
           onClick={() => {
-            editRace(raceData);
+            const wasUpdated = editRace(raceData);
+            if (wasUpdated) {
+              console.log("was updated");
+            }
           }}
         >
           Edit Race

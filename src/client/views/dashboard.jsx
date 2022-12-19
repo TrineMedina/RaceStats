@@ -1,5 +1,5 @@
 import React from "react";
-import RaceTable from "../components/raceTable";
+import RaceTable from "../components/RaceTable";
 import { Box } from "@mui/material";
 
 const Dashboard = () => {

@@ -8,9 +8,9 @@
 }
 
 .buttonWrapper {
-    width: 560px;
+    width: 590px;
     margin: auto;
-    /*overflow: hidden;*/
+
 }
 
 .MuiInputBase-root {
@@ -24,6 +24,7 @@
 
 .MuiStack-root {
     background-color: #F6F5F5;
+    opacity: 0.9;
     border: 1px solid black;
     width: 560px;
     margin: auto;
@@ -49,10 +50,4 @@ h1::after {
     width: 80%;
     padding-left: 14vw;
     /*margin: auto;*/
-}
-
-.mainContainer {
-    background: #00334E;
-    color: #F6F5F5;
-    overflow: auto;
 }

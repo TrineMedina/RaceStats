@@ -7,6 +7,7 @@ import deleteRace from "../services/deleteRaceAPI";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import StyledButton from "./StyledButton";
 import { useNavigate } from "react-router-dom";
+import EditRace from "./EditRace";
 
 const RaceTable = () => {
   const [raceList, setRaceList] = useState([{ id: "initial" }]);
@@ -43,10 +44,12 @@ const RaceTable = () => {
     if (selectedRace.length === 1) {
       //TODO Add promise and resolve to ensure the list is updated after the edits have been made to the database
       const race = raceList.filter((race) => race.id === selectedRace[0]);
-      navigate("/addRace", { state: race });
+      // navigate("/addRace", { state: race });
+      console.log("race in table: ", race[0]);
+      navigate("/EditRace", { state: race[0] });
     } else {
       //TODO create to customized alert popup
-      alert("Please only select one race to edit");
+      alert("Please select one race to edit");
     }
   };
 

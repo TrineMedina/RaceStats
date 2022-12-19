@@ -1,7 +1,7 @@
 /*document.body.style.backgroundColor = "#00334E";*/
 body {
     /*background-color: #00334E;*/
-    background-image: linear-gradient(#00334E, #145374 30%, #EE6F57 60%);
+    background-image: linear-gradient(#00334E, #145374 30%, #EE6F57 90%);
     height: 100vw;
     overflow-y: hidden;
 }
