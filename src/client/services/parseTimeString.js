@@ -1,7 +1,4 @@
 const parseTimeString = (time) => {
-  // if (time.length !== 8) return time;
-  console.log("time: ", time);
-
   const times = time.split(":");
 
   return times;

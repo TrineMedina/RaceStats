@@ -4,32 +4,34 @@
     background-color: #EE6F57;
     width: 80%;
     margin: auto;
+    min-width: 590px;
     overflow: hidden;
 }
 
 .buttonWrapper {
     width: 590px;
+    min-width: 400px;
     margin: auto;
-
 }
+
 
 .MuiInputBase-root {
     min-width: 140px;
+    max-width: 250px;
     background-color: #F6F5F5;
     padding: 10px;
-    overflow: hidden;
     border-radius: 5px;
     border: 2px;
 }
 
 .MuiStack-root {
-    background-color: #F6F5F5;
-    opacity: 0.9;
-    border: 1px solid black;
+    background-color: transparent;
     width: 560px;
+    min-width: 400px;
     margin: auto;
     padding: 12px 8px;
     border-radius: 5px;
+    overflow: hidden;
 }
 
 h1 {
@@ -50,4 +52,8 @@ h1::after {
     width: 80%;
     padding-left: 14vw;
     /*margin: auto;*/
+}
+
+.MuiSvgIcon-root {
+    color: #00334E;
 }

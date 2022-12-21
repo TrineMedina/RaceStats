@@ -1,7 +1,7 @@
 import React, { createContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "./views/dashboard";
-import AddRace from "./components/AddRace";
+import RaceData from "./components/RaceData";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import EditRace from "./components/EditRace";
 
@@ -21,7 +21,7 @@ const App = () => {
         {/*TODO Create login/signup */}
         {/*<Route path="/login" element={<Login />} />*/}
         {/*<Route path="/signup" element={<Signup />} />*/}
-        <Route path="/AddRace" element={<AddRace />} />
+        <Route path="/RaceData" element={<RaceData />} />
         <Route path="/EditRace" element={<EditRace />} />
       </Routes>
       {/*  </ItemContext.Provider>*/}

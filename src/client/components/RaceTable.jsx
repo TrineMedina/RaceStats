@@ -7,7 +7,7 @@ import deleteRace from "../services/deleteRaceAPI";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import StyledButton from "./StyledButton";
 import { useNavigate } from "react-router-dom";
-import EditRace from "./EditRace";
+import { Stack } from "@mui/system";
 
 const RaceTable = () => {
   const [raceList, setRaceList] = useState([{ id: "initial" }]);
@@ -19,7 +19,6 @@ const RaceTable = () => {
    * This function parses the race data that's received from the server. It's needed
    * because the objects returned have values that are only for the race table and
    * other values that are only for the chart
-   * @returns default
    */
   const updateRaceList = async () => {
     const parsedData = await parseRaceData();
@@ -159,45 +158,55 @@ const RaceTable = () => {
           color: "#F6F5F5",
           fontSize: 12,
           textAlign: "center",
-          border: "4px solid #EE6F57",
-          boxShadow: 12,
-          margin: 1,
+          margin: "auto",
           padding: 0,
+          maxWidth: 1000,
         }}
         checkboxSelection={true}
         onSelectionModelChange={(id) => {
           setSelectedRace([...id]);
         }}
         selectionModel={selectedRace}
+        pagination
+        pageSize={5}
+        rowsPerPageOptions={[5]}
         columns={columns}
         rows={raceList}
-        rowsPerPageOptions={[]}
       ></DataGrid>
-      <StyledButton
-        variant="contained"
-        onClick={() => {
-          console.log(
-            "clicking compare - this will navigate to chartView to compare race stats"
-          );
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        justifyContent="center"
+        sx={{
+          padding: 1,
+          background: "transparent",
+          border: "none",
+          minWidth: 200,
         }}
       >
-        Compare Races
-      </StyledButton>
-      <StyledButton
-        onClick={() => {
-          navigate("AddRace");
-        }}
-      >
-        Add Race
-      </StyledButton>
-      <StyledButton
-        onClick={(event) => {
-          console.log(event);
-          handleEditButton();
-        }}
-      >
-        Edit Race
-      </StyledButton>
+        <StyledButton
+          onClick={() => {
+            console.log(
+              "clicking compare - this will navigate to chartView to compare race stats"
+            );
+          }}
+        >
+          Compare Races
+        </StyledButton>
+        <StyledButton
+          onClick={() => {
+            navigate("RaceData");
+          }}
+        >
+          Add Race
+        </StyledButton>
+        <StyledButton
+          onClick={(event) => {
+            handleEditButton();
+          }}
+        >
+          Edit Race
+        </StyledButton>
+      </Stack>
     </Box>
   );
 };

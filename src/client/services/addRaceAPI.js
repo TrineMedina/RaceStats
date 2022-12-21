@@ -1,7 +1,7 @@
 import calculateSeconds from "./calculateSeconds";
 import concatRaceTimes from "./concatRaceTimes";
 
-const submitRace = (race) => {
+const addRace = (race) => {
   console.log("fetching! ", race);
 
   const {
@@ -68,11 +68,14 @@ const submitRace = (race) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      if (data.rowCount === 1) {
+        return true;
+      }
+      return false;
     })
     .catch((err) => {
       console.log("Error adding race to database ", err);
     });
 };
 
-export default submitRace;
+export default addRace;

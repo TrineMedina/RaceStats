@@ -9,6 +9,7 @@ export default styled.button`
   margin: 10px 8px 0px 8px;
   cursor: pointer;
   font-weight: bold;
+  max-width: 200px;
 
   &:hover {
     background-color: #145374;
