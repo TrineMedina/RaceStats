@@ -24,13 +24,14 @@ const RaceTable = () => {
     const parsedData = await parseRaceData();
     setRaceList(parsedData.table);
     setRaceTimes(parsedData.chart);
+    console.log("updating racetimes: ", raceTimes);
   };
 
   useEffect(() => {
     if (raceList) {
       updateRaceList();
     }
-  }, [raceList.length]);
+  }, []);
 
   const handleDeleteButton = async (id) => {
     const wasDeleted = await deleteRace(id);
@@ -42,13 +43,26 @@ const RaceTable = () => {
   const handleEditButton = () => {
     if (selectedRace.length === 1) {
       //TODO Add promise and resolve to ensure the list is updated after the edits have been made to the database
+      // right now it does a new api call -> could be changed to react query?
       const race = raceList.filter((race) => race.id === selectedRace[0]);
-      // navigate("/addRace", { state: race });
-      console.log("race in table: ", race[0]);
       navigate("/EditRace", { state: race[0] });
     } else {
-      //TODO create to customized alert popup
       alert("Please select one race to edit");
+    }
+  };
+
+  const handleCompareButton = () => {
+    if (selectedRace.length > 1 && selectedRace.length < 4) {
+      const races = [];
+      selectedRace.forEach((raceId) => {
+        const raceToCompare = raceTimes.filter((race) => {
+          return race.id === +raceId;
+        });
+        races.push(...raceToCompare);
+      });
+      navigate("/Chart", { state: races });
+    } else {
+      alert("Please select two or three races to compare");
     }
   };
 
@@ -184,10 +198,8 @@ const RaceTable = () => {
         }}
       >
         <StyledButton
-          onClick={() => {
-            console.log(
-              "clicking compare - this will navigate to chartView to compare race stats"
-            );
+          onClick={(event) => {
+            handleCompareButton();
           }}
         >
           Compare Races

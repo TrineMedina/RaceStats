@@ -24,7 +24,7 @@ import {
 import addRace from "../services/addRaceAPI";
 import editRace from "../services/editRaceAPI";
 import { useNavigate } from "react-router-dom";
-import "./addRace.css";
+import "./raceData.css";
 import StyledButton from "./StyledButton";
 
 const RaceData = (props) => {
@@ -75,10 +75,25 @@ const RaceData = (props) => {
 
   const handleSubmit = () => {
     let wasCompleted;
-    if (props.id) {
-      wasCompleted = editRace({ ...raceData, id: props.id });
+
+    if (
+      raceData.race_name &&
+      raceData.race_year &&
+      raceData.race_distance &&
+      raceData.swim_distance &&
+      raceData.bike_distance &&
+      raceData.run_distance
+    ) {
+      if (props.id) {
+        wasCompleted = editRace({ ...raceData, id: props.id });
+      } else {
+        wasCompleted = addRace(raceData);
+      }
     } else {
-      wasCompleted = addRace(raceData);
+      console.log(raceData);
+      alert(
+        "Please complete all required fields: race name, year, distance, and swim, bike and run distances"
+      );
     }
     if (wasCompleted) navigate("/Race");
   };
@@ -162,6 +177,7 @@ const RaceData = (props) => {
         <FormControl>
           <Autocomplete
             id="swim_distance"
+            required={true}
             value={swim_distance}
             options={swimDistances()}
             autoHighlight
@@ -235,6 +251,7 @@ const RaceData = (props) => {
         <FormControl>
           <Autocomplete
             id="bike_distance"
+            required={true}
             value={bike_distance}
             options={bikeDistances()}
             autoHighlight
@@ -311,6 +328,7 @@ const RaceData = (props) => {
         <FormControl>
           <Autocomplete
             id="run_distance"
+            required={true}
             value={run_distance}
             options={runDistances()}
             autoHighlight

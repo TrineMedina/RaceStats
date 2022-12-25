@@ -5,7 +5,7 @@
 
 ## Setup Notes
 
-- Add a .env file in the root directory with a db URI: PG_URI
+- Add a .env file in the root directory with a db URI: PG_URIn
 
 ## Todo Notes
 

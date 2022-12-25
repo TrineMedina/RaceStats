@@ -25,12 +25,12 @@
 }
 
 .MuiStack-root {
-    background-color: transparent;
+    background-color: #F6F5F5;
     width: 560px;
     min-width: 400px;
     margin: auto;
     padding: 12px 8px;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     overflow: hidden;
 }
 

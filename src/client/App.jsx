@@ -4,6 +4,7 @@ import Dashboard from "./views/dashboard";
 import RaceData from "./components/RaceData";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import EditRace from "./components/EditRace";
+import Chart from "./components/Chart";
 
 const UserContext = createContext([{}, () => {}]);
 const RaceContext = createContext([{}, () => {}]);
@@ -23,6 +24,7 @@ const App = () => {
         {/*<Route path="/signup" element={<Signup />} />*/}
         <Route path="/RaceData" element={<RaceData />} />
         <Route path="/EditRace" element={<EditRace />} />
+        <Route path="/Chart" element={<Chart />} />
       </Routes>
       {/*  </ItemContext.Provider>*/}
       {/*</UserContext.Provider>*/}

@@ -6,6 +6,11 @@ const parseRaceData = async () => {
 
   const updatedRaceList = await getRaces();
 
+  if (updatedRaceList.length < 1) {
+    console.log("no race lists");
+    return;
+  }
+
   await updatedRaceList.forEach((race) => {
     const {
       id,
@@ -36,7 +41,14 @@ const parseRaceData = async () => {
       run_time,
     });
 
-    raceDataForChart.push({ id, swim_seconds, bike_seconds, run_seconds });
+    raceDataForChart.push({
+      id,
+      race_name,
+      race_year,
+      swim_seconds,
+      bike_seconds,
+      run_seconds,
+    });
   });
 
   return { table: racesForTable, chart: raceDataForChart };

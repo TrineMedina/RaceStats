@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import "./addRace.css";
+import "./raceData.css";
 import { getHours, getMinutes, getSeconds } from "../services/parseTimeString";
 import RaceData from "./RaceData";
 
