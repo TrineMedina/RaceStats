@@ -23,30 +23,86 @@ const Chart = () => {
 
   const location = useLocation();
   const raceList = location.state;
-  console.log(raceList);
 
-  const options = {
+  const optionsSwim = {
     responsive: true,
     plugins: {
+      title: {
+        display: true,
+        text: "Swim Times",
+      },
       legend: {
         display: false,
       },
-      title: {
-        // display: true,
-        // text: "Race Comparison",
+    },
+    scales: {
+      y: {
+        title: {
+          display: true,
+          text: "Minutes",
+        },
       },
     },
   };
 
-  const labels = raceList.map((race) => race.race_name);
+  const optionsBike = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: "Bike Times",
+      },
+      legend: {
+        display: false,
+      },
+    },
+    scales: {
+      y: {
+        title: {
+          display: true,
+          text: "Hours",
+        },
+      },
+    },
+  };
+
+  const optionsRun = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: "Run Times",
+      },
+      legend: {
+        display: false,
+      },
+    },
+    scales: {
+      y: {
+        title: {
+          display: true,
+          text: "Hours",
+        },
+      },
+    },
+  };
+
+  const labels = raceList.map((race) => {
+    return `${race.race_name} ${race.race_year}`;
+  });
 
   const swimData = {
+    type: "bar",
     labels,
+    title: {
+      display: true,
+      text: "Swim Times",
+    },
     datasets: [
       {
         label: "Swim Times",
         data: raceList.map((race) => {
-          return race.swim_seconds / 3600;
+          return race.swim_seconds / 60;
         }),
         backgroundColor: ["#FFBF00", "#540375", "#10A19D"],
       },
@@ -87,11 +143,12 @@ const Chart = () => {
         height: "100vw",
         width: "50%",
         overflowY: "auto",
+        margin: "auto",
       }}
     >
-      <Bar options={options} data={swimData} />
-      <Bar options={options} data={bikeData} />
-      <Bar options={options} data={runData} />
+      <Bar options={optionsSwim} data={swimData} />
+      <Bar options={optionsBike} data={bikeData} />
+      <Bar options={optionsRun} data={runData} />
     </div>
   );
 };

@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { Stack } from "@mui/system";
 
 const RaceTable = () => {
-  const [raceList, setRaceList] = useState([{ id: "initial" }]);
+  const [raceList, setRaceList] = useState([]);
   const [selectedRace, setSelectedRace] = useState([]);
   const [raceTimes, setRaceTimes] = useState([]);
   const navigate = useNavigate();

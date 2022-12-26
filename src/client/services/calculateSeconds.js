@@ -15,8 +15,7 @@ const calculateSeconds = (hh, mm, ss) => {
   mm ? mm : (mm = 0);
   ss ? ss : (ss = 0);
 
-  const totalSeconds = hh * 3600 + mm * 60 + ss * 1;
-  console.log("total seconds: ", totalSeconds);
+  return hh * 3600 + mm * 60 + ss * 1;
 };
 
 export default calculateSeconds;
