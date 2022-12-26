@@ -136,6 +136,7 @@ const RaceData = (props) => {
       >
         <FormControl>
           <Autocomplete
+            disableClearable
             value={race_year}
             id="race_year"
             options={years()}
@@ -153,6 +154,7 @@ const RaceData = (props) => {
         </FormControl>
         <FormControl>
           <Autocomplete
+            disableClearable
             value={race_distance}
             id="race_distance"
             options={raceDistances()}
@@ -176,6 +178,7 @@ const RaceData = (props) => {
       >
         <FormControl>
           <Autocomplete
+            disableClearable
             id="swim_distance"
             required={true}
             value={swim_distance}
@@ -192,6 +195,7 @@ const RaceData = (props) => {
         </FormControl>
         <FormControl>
           <Autocomplete
+            disableClearable
             id="swim_hour"
             value={swim_hour}
             options={hours}
@@ -209,6 +213,7 @@ const RaceData = (props) => {
         </FormControl>
         <FormControl>
           <Autocomplete
+            disableClearable
             id="swim_minutes"
             value={swim_minutes}
             options={minutes}
@@ -226,6 +231,7 @@ const RaceData = (props) => {
         </FormControl>
         <FormControl>
           <Autocomplete
+            disableClearable
             id="swim_seconds"
             value={swim_seconds}
             options={seconds}
@@ -250,6 +256,7 @@ const RaceData = (props) => {
       >
         <FormControl>
           <Autocomplete
+            disableClearable
             id="bike_distance"
             required={true}
             value={bike_distance}
@@ -268,6 +275,7 @@ const RaceData = (props) => {
         </FormControl>
         <FormControl>
           <Autocomplete
+            disableClearable
             id="bike_hour"
             value={bike_hour}
             options={hours}
@@ -279,13 +287,13 @@ const RaceData = (props) => {
               return option.id === value.id;
             }}
             onChange={(event, value) => {
-              console.log("event and value - bike hours: ", event, value);
               handleChange(event, value);
             }}
           />
         </FormControl>
         <FormControl>
           <Autocomplete
+            disableClearable
             id="bike_minutes"
             value={bike_minutes}
             options={minutes}
@@ -303,6 +311,7 @@ const RaceData = (props) => {
         </FormControl>
         <FormControl>
           <Autocomplete
+            disableClearable
             id="bike_seconds"
             value={bike_seconds}
             options={seconds}
@@ -327,6 +336,7 @@ const RaceData = (props) => {
       >
         <FormControl>
           <Autocomplete
+            disableClearable
             id="run_distance"
             required={true}
             value={run_distance}
@@ -343,6 +353,7 @@ const RaceData = (props) => {
         </FormControl>
         <FormControl>
           <Autocomplete
+            disableClearable
             id="run_hour"
             value={run_hour}
             options={hours}
@@ -360,6 +371,7 @@ const RaceData = (props) => {
         </FormControl>
         <FormControl>
           <Autocomplete
+            disableClearable
             id="run_minutes"
             value={run_minutes}
             options={minutes}
@@ -377,6 +389,7 @@ const RaceData = (props) => {
         </FormControl>
         <FormControl>
           <Autocomplete
+            disableClearable
             id="run_seconds"
             value={run_seconds}
             options={seconds}

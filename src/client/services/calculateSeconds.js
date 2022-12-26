@@ -7,13 +7,16 @@ const calculateSeconds = (hh, mm, ss) => {
   //Setting any undefined values to zero to ensure
   //calculation of seconds is done correctly. It's
   //guaranteed that only a number is passed
-  !+hh ? (hh = 0) : +hh;
-  !+mm ? (mm = 0) : +mm;
-  !+ss ? (ss = 0) : +ss;
+  // !+hh ? (hh = 0) : +hh;
+  // !+mm ? (mm = 0) : +mm;
+  // !+ss ? (ss = 0) : +ss;
 
-  console.log("passed number type: ", typeof hh, typeof mm, typeof ss);
+  hh ? hh : (hh = 0);
+  mm ? mm : (mm = 0);
+  ss ? ss : (ss = 0);
 
-  return hh * 3600 + mm * 60 + ss;
+  const totalSeconds = hh * 3600 + mm * 60 + ss * 1;
+  console.log("total seconds: ", totalSeconds);
 };
 
 export default calculateSeconds;
