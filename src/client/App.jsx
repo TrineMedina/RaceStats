@@ -2,19 +2,18 @@ import React, { createContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "./views/dashboard";
 import RaceData from "./components/RaceData";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import EditRace from "./components/EditRace";
 import Chart from "./components/Chart";
 
-const UserContext = createContext([{}, () => {}]);
-const RaceContext = createContext([{}, () => {}]);
+// const UserContext = createContext([{}, () => {}]);
+// const RaceContext = createContext([{}, () => {}]);
 
 const App = () => {
   // TODO For future use when setting up specific user access
   // const [userId, setUserId] = useState(null);
 
   return (
-    <div className="App">
+    <div>
       {/*<UserContext.Provider value={[userId, setUserId]}>*/}
       {/*  <ItemContext.Provider value={[selectedRace, setSelectedRace]}>*/}
       <Routes>
@@ -32,4 +31,4 @@ const App = () => {
   );
 };
 
-export { App, UserContext };
+export default App;

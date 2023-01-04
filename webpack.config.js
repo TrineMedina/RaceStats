@@ -1,4 +1,3 @@
-const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -32,7 +31,7 @@ module.exports = {
     rules: [
       {
         test: /.(js|jsx)$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules|bower_components)/,
         use: {
           loader: "babel-loader",
           options: {
@@ -41,14 +40,15 @@ module.exports = {
         },
       },
       {
-        test: /.(css|scss)$/,
+        // test: /.(css|scss)$/,
+        test: /\.css$/i,
         exclude: /node_modules/,
         use: ["style-loader", "css-loader"],
       },
-      {
-        test: /\.(png|jpe?g|gif|svg|eot|ttf)$/,
-        loader: "url-loader",
-      },
+      // {
+      //   test: /\.(png|jpe?g|gif|svg|eot|ttf)$/,
+      //   loader: "url-loader",
+      // },
     ],
   },
   plugins: [

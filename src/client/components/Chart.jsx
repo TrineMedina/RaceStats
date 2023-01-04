@@ -10,6 +10,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { useLocation } from "react-router-dom";
+import "./chart.css";
 
 const Chart = () => {
   ChartJS.register(
@@ -136,19 +137,16 @@ const Chart = () => {
   };
 
   return (
-    <div
-      className="charts"
-      style={{
-        backgroundColor: "white",
-        height: "100vw",
-        width: "50%",
-        overflowY: "auto",
-        margin: "auto",
-      }}
-    >
-      <Bar options={optionsSwim} data={swimData} />
-      <Bar options={optionsBike} data={bikeData} />
-      <Bar options={optionsRun} data={runData} />
+    <div className="chartContainer">
+      <div className="chartWrapper">
+        <Bar options={optionsSwim} data={swimData} />
+      </div>
+      <div className="chartWrapper">
+        <Bar options={optionsBike} data={bikeData} />
+      </div>
+      <div className="chartWrapper">
+        <Bar options={optionsRun} data={runData} />
+      </div>
     </div>
   );
 };

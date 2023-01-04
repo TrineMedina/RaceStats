@@ -1,0 +1,18 @@
+
+.chartContainer {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 100%;
+    max-width: 50%;
+    min-width: 30%;
+    margin: 20px auto 0 auto;
+}
+
+.chartWrapper {
+    flex-wrap: wrap;
+    height: 30%;
+    width: 100%;
+    border: 1px solid #EE6F57;
+    margin: auto;
+}

@@ -2,8 +2,6 @@ import calculateSeconds from "./calculateSeconds";
 import concatRaceTimes from "./concatRaceTimes";
 
 const addRace = (race) => {
-  console.log("fetching! ", race);
-
   const {
     race_year,
     race_name,

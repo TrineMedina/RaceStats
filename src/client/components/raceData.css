@@ -1,12 +1,3 @@
-.mainContainer {
-    top: 3vw;
-    color: #145374;
-    background-color: #EE6F57;
-    width: 80%;
-    margin: auto;
-    min-width: 590px;
-    overflow: hidden;
-}
 
 .buttonWrapper {
     width: 590px;
