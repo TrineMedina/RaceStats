@@ -1,18 +1,21 @@
 
 .chartContainer {
+    padding-top: 5rem;
     display: flex;
-    flex-direction: row;
-    background-color: white;
-    height: 100%;
-    max-width: 50%;
-    min-width: 30%;
-    margin: 20px auto 0 auto;
+    flex-flow: column;
+    /*background-color: white;*/
+    justify-content: center;
+    color: white;
+    align-items: center;
+    gap: 4%;
 }
 
 .chartWrapper {
-    flex-wrap: wrap;
-    height: 30%;
-    width: 100%;
+    flex-basis: 40%;
     border: 1px solid #EE6F57;
-    margin: auto;
+    margin: auto auto 5px;
+}
+
+canvas {
+    background-color: white;
 }

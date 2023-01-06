@@ -4,6 +4,9 @@ import Dashboard from "./views/dashboard";
 import RaceData from "./components/RaceData";
 import EditRace from "./components/EditRace";
 import Chart from "./components/Chart";
+import SignIn from "./views/SignIn";
+import SignUp from "./views/SignUp";
+import Header from "./components/Header";
 
 // const UserContext = createContext([{}, () => {}]);
 // const RaceContext = createContext([{}, () => {}]);
@@ -14,13 +17,14 @@ const App = () => {
 
   return (
     <div>
+      <Header />
       {/*<UserContext.Provider value={[userId, setUserId]}>*/}
       {/*  <ItemContext.Provider value={[selectedRace, setSelectedRace]}>*/}
       <Routes>
         <Route exact path="/*" element={<Dashboard />} />
-        {/*TODO Create login/signup */}
-        {/*<Route path="/login" element={<Login />} />*/}
-        {/*<Route path="/signup" element={<Signup />} />*/}
+        {/*<Route path="/*" element={<SignIn />} />*/}
+        {/*<Route path="/sign-in" element={<SignIn />} />*/}
+        {/*<Route path="/sign-up" element={<SignUp />} />*/}
         <Route path="/RaceData" element={<RaceData />} />
         <Route path="/EditRace" element={<EditRace />} />
         <Route path="/Chart" element={<Chart />} />

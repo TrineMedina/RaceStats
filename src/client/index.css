@@ -1,9 +1,20 @@
-/*document.body.style.backgroundColor = "#00334E";*/
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit
+}
+
 body {
     /*background-color: #00334E;*/
     background-image: linear-gradient(#00334E 80%, #145374);
     height: 100vw;
-    overflow-y: hidden;
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+    overflow: hidden;
 }
 
 .App {
@@ -43,7 +54,8 @@ body {
 
 .MuiDataGrid-root {
     background-color: transparent;
-    margin: 0px;
+    flex-basis: 98%;
+    margin: 0;
 }
 
 @media screen and (max-width: 500px) {

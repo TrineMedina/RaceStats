@@ -10,9 +10,10 @@ export default styled.button`
   cursor: pointer;
   font-weight: bold;
   max-width: 200px;
+  border: none;
 
   &:hover {
-    background-color: #145374;
+    background-color: #ee6f57;
     color: #f6f5f5;
   }
 `;

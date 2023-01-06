@@ -105,7 +105,7 @@ const Chart = () => {
         data: raceList.map((race) => {
           return race.swim_seconds / 60;
         }),
-        backgroundColor: ["#FFBF00", "#540375", "#10A19D"],
+        backgroundColor: ["#EE6F57"],
       },
     ],
   };
@@ -118,7 +118,7 @@ const Chart = () => {
         data: raceList.map((race) => {
           return race.bike_seconds / 3600;
         }),
-        backgroundColor: ["#FFBF00", "#540375", "#10A19D"],
+        backgroundColor: ["#EE6F57"],
       },
     ],
   };
@@ -131,7 +131,7 @@ const Chart = () => {
         data: raceList.map((race) => {
           return race.run_seconds / 3600;
         }),
-        backgroundColor: ["#FFBF00", "#540375", "#10A19D"],
+        backgroundColor: ["#EE6F57"],
       },
     ],
   };
