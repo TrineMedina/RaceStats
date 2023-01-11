@@ -21,22 +21,6 @@ body {
     position: relative;
 }
 
-/*header {*/
-/*    display: block;*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    background-color: #145374;*/
-/*    padding-bottom: 20px;*/
-/*    margin-bottom: 20px;*/
-/*    width: 100vw;*/
-/*    height: 2vw;*/
-/*    color: #F6F5F5;*/
-/*    font-size: 20px;*/
-/*    font-weight: bold;*/
-/*    font-family: "Big Caslon";*/
-/*    text-align: right;*/
-/*}*/
-
 .dashboard {
     background-color: transparent;
 }
@@ -45,9 +29,9 @@ body {
     background-color: transparent;
     top: 3vw;
     color: #145374;
-    width: 80%;
+    /*width: 80%;*/
     margin: auto;
-    min-width: 590px;
+    /*min-width: 590px;*/
     overflow: hidden;
 
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import "./header.css";
+import logo from "../assets/logo-no-background.svg";
 
 const Header = () => {
   return (
@@ -8,13 +9,18 @@ const Header = () => {
         <nav>
           <ul>
             <li>
-              <a href="linktosomewhere">Home</a>
+              <a href="linktosomewhere">
+                <img
+                  src={logo}
+                  // alt="Race Stats. Click for home"
+                ></img>
+              </a>
             </li>
             <li>
               <a href="linktosomewhere">About</a>
             </li>
             <li>
-              <a href="linktosomewhere">Login</a>
+              <a href="linktosomewhere">GitHub</a>
             </li>
           </ul>
         </nav>
@@ -23,6 +29,3 @@ const Header = () => {
   );
 };
 export default Header;
-//to set up a logo with link to home:
-//<li><a href="linktohome"><img src="img/..."
-// alt="image name click for home"><a/>

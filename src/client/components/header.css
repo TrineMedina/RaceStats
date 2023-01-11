@@ -1,35 +1,98 @@
 .header {
-    background-color: #EE6F57;
+    /*background-color: #EE6F57;*/
 }
 
 header {
     padding: 1rem;
     max-width: 1200px;
     margin: 0 auto;
+    font-family: "American Typewriter";
 }
 
+img {
+    width: 10rem;
+    height: auto;
+}
+
+/*Universal nav styling regardless of breakpoints*/
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
+
 nav ul {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+    align-items: stretch;
 }
 
-/*Always display link as block*/
+nav li {
+    flex-basis: 48%;
+    margin-bottom: 0.5rem;
+}
+
+nav li:first-child {
+    flex-basis: 100%;
+    text-align: center;
+}
+
+nav li:first-child a {
+    background-color: transparent;
+}
+
+/*Always display link as block in a navbar*/
 nav a {
     text-decoration: none;
-    font-size: 1.2rem;
-    color: #00334E;
+    font-size: 1rem;
     display: block;
-    padding: 2px;
+    padding: 0.2em;
+    text-align: center;
+    background-color: #EE6F57;
+    border-radius: 5px;
+    color: #F6F5F5;
+}
+
+nav a:hover {
+    background-color: #145374;
+}
+
+@media (min-width: 550px) {
+
+    header {
+        padding: 1rem;
+        background-color: #EE6F57;
+    }
+
+    nav ul {
+        justify-content: center;
+        gap: 1.2em;
+    }
+
+    nav li {
+        flex-basis: auto;
+        margin-bottom: 0;
+    }
+
+    nav a {
+        background-color: transparent;
+        padding: 0;
+        color: #00334E;
+    }
+
+    nav a:hover {
+        background-color: transparent;
+
+    }
 }
 
 @media (min-width: 800px) {
+
+    .header {
+        background-color: #EE6F57;
+    }
 
     nav li:first-child {
         flex-basis: auto;
