@@ -1,0 +1,32 @@
+.signInWrapper {
+    background: white;
+    width: 36rem;
+    margin: auto;
+    text-align: center;
+    border-radius: 5px;
+}
+
+h3 {
+    color: #00334E;
+    font-family: Arial;
+}
+
+input {
+    width: 20rem;
+    font-size: 0.8em;
+}
+
+button {
+    padding: 5px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 1rem 0rem;
+    border-radius: 5px;
+    background-color: #EE6F57;
+    border: none;
+}
+
+button:hover {
+    background-color: #145374;
+    color: #F6F5F5;
+}

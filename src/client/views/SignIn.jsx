@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Button from "../components/StyledButton";
+import "./signin.css";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({ userName: "", password: "" });
 
-  const { email, password } = formData;
-
-  const navigate = useNavigate();
+  // const { email, password } = formData;
 
   const onChange = (event) => {
+    event.preventDefault();
     setFormData((prevState) => {
       setFormData({
         ...prevState,
@@ -18,20 +19,22 @@ function SignIn() {
     });
   };
 
+  const handleSignIn = () => {
+    console.log(formData);
+  };
+
   return (
-    <div className="mainContainer" style={{ background: "white" }}>
+    <div className="signInWrapper">
       <div className="pageContainer">
-        <header>
-          <p className="pageHeader">Welcome Back!</p>
-        </header>
+        <h3 className="pageHeader">Sign in to access Race Stats</h3>
 
         <form>
           <input
-            type="email"
-            className="emailInput"
-            placeholder="Email"
-            id="email"
-            value={email}
+            type="text"
+            className="userName"
+            placeholder="User Name"
+            id="userName"
+            // value={formData.email}
             onChange={onChange}
           />
 
@@ -41,35 +44,36 @@ function SignIn() {
               className="passwordInput"
               placeholder="Password"
               id="password"
-              value={password}
+              // value={formData.password}
               onChange={onChange}
             />
 
-            <img
-              // src={visibilityIcon}
-              alt="show password"
-              className="showPassword"
-              onClick={() => {
-                setShowPassword((prevState) => {
-                  !prevState;
-                });
-              }}
-            />
+            {/*<img*/}
+            {/*  // src={visibilityIcon}*/}
+            {/*  alt="show password"*/}
+            {/*  className="showPassword"*/}
+            {/*  onClick={() => {*/}
+            {/*    setShowPassword((prevState) => {*/}
+            {/*      !prevState;*/}
+            {/*    });*/}
+            {/*  }}*/}
+            {/*/>*/}
           </div>
-          <Link to="/forgot-password" className="forgotPassword">
-            Forgot Password
-          </Link>
+          {/*<Link to="/forgot-password" className="forgotPassword">*/}
+          {/*  Forgot Password*/}
+          {/*</Link>*/}
 
           <div className="signInBar">
-            <button className="signInButton">Sign In</button>
+            <Button className="signInButton" onClick={handleSignIn}>
+              Sign In
+            </Button>
           </div>
         </form>
 
         {/*  Google OAuth */}
-
-        <Link to="/sign-up" className="registerLink">
-          Sign Up Instead
-        </Link>
+        {/*<Link to="/sign-up" className="registerLink">*/}
+        {/*  Sign Up Instead*/}
+        {/*</Link>*/}
       </div>
     </div>
   );

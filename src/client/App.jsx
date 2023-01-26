@@ -21,10 +21,11 @@ const App = () => {
       {/*<UserContext.Provider value={[userId, setUserId]}>*/}
       {/*  <ItemContext.Provider value={[selectedRace, setSelectedRace]}>*/}
       <Routes>
-        <Route exact path="/*" element={<Dashboard />} />
-        {/*<Route path="/*" element={<SignIn />} />*/}
+        <Route path="/*" element={<SignIn />} />
+        <Route exact path="/Dashboard" element={<Dashboard />} />
         {/*<Route path="/sign-in" element={<SignIn />} />*/}
         {/*<Route path="/sign-up" element={<SignUp />} />*/}
+
         <Route path="/RaceData" element={<RaceData />} />
         <Route path="/EditRace" element={<EditRace />} />
         <Route path="/Chart" element={<Chart />} />
