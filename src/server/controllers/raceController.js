@@ -144,22 +144,28 @@ raceController.deleteRace = async (req, res, next) => {
 };
 
 raceController.getRaces = async (req, res, next) => {
-  const query = "SELECT * FROM races";
+  console.log("is auth? ", res.locals.auth);
+  if (res.locals.auth) {
+    const { user_id } = res.locals;
+    const query = "SELECT * FROM races WHERE user_id = $1";
+    const parameter = [user_id];
 
-  await db
-    .query(query)
-    .then((data) => {
-      res.locals.races = data.rows;
-      return next();
-    })
-    .catch((err) => {
-      next({
-        log: `An error occurred in raceController getRaces: ${err}`,
-        message: {
-          err: "An error occurred when trying to retrieve all races from the database -> raceController.getRaces",
-        },
+    await db
+      .query(query, parameter)
+      .then((data) => {
+        console.log("in get races: ", data.rows);
+        res.locals.races = data.rows;
+        return next();
+      })
+      .catch((err) => {
+        next({
+          log: `An error occurred in raceController getRaces: ${err}`,
+          message: {
+            err: "An error occurred when trying to retrieve all races from the database -> raceController.getRaces",
+          },
+        });
       });
-    });
+  } else return next();
 };
 
 module.exports = raceController;

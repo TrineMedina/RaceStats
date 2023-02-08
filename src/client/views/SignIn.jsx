@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../components/StyledButton";
-import authUser from "../services/authenticateUserAPI";
+import getRaces from "../services/getRacesAPI.js";
 import "./signin.css";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({ user_name: "", password: "" });
-
+  const navigate = useNavigate();
   // const { email, password } = formData;
 
   const onChange = (event) => {
-    // event.preventDefault();
-    console.log(formData);
     setFormData((prevState) => {
       setFormData({
         ...prevState,
@@ -21,10 +19,14 @@ function SignIn() {
     });
   };
 
-  const handleAuth = (event) => {
+  const handleAuth = async (event) => {
     event.preventDefault();
     console.log("in form: ", formData);
-    authUser(formData);
+    let data = await getRaces(formData);
+    console.log(data);
+    // data
+    //   ? navigate("/Dashboard", { state: data })
+    //   : alert("I'm sorry, that login info is incorrect.");
   };
 
   return (
@@ -37,7 +39,7 @@ function SignIn() {
             type="text"
             className="userName"
             placeholder="User Name"
-            id="userName"
+            id="user_name"
             // value={formData.email}
             onChange={onChange}
           />

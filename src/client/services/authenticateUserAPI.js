@@ -5,7 +5,7 @@ const authUser = async (user) => {
   const { user_name, password } = user;
   const navigate = useNavigate();
 
-  await fetch("/login", {
+  await fetch("/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
