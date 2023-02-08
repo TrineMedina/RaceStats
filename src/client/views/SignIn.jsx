@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/StyledButton";
+import authUser from "../services/authenticateUserAPI";
 import "./signin.css";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({ userName: "", password: "" });
+  const [formData, setFormData] = useState({ user_name: "", password: "" });
 
   // const { email, password } = formData;
 
   const onChange = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
+    console.log(formData);
     setFormData((prevState) => {
       setFormData({
         ...prevState,
@@ -19,8 +21,10 @@ function SignIn() {
     });
   };
 
-  const handleSignIn = () => {
-    console.log(formData);
+  const handleAuth = (event) => {
+    event.preventDefault();
+    console.log("in form: ", formData);
+    authUser(formData);
   };
 
   return (
@@ -64,7 +68,7 @@ function SignIn() {
           {/*</Link>*/}
 
           <div className="signInBar">
-            <Button className="signInButton" onClick={handleSignIn}>
+            <Button className="signInButton" onClick={handleAuth}>
               Sign In
             </Button>
           </div>

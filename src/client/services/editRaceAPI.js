@@ -2,8 +2,6 @@ import calculateSeconds from "./calculateSeconds";
 import concatRaceTimes from "./concatRaceTimes";
 
 const editRace = async (race) => {
-  console.log("editing! ", race);
-
   const {
     id,
     race_year,
@@ -46,8 +44,6 @@ const editRace = async (race) => {
     race.run_minutes,
     race.run_seconds
   );
-
-  console.log("race body: ", race);
 
   await fetch("/race", {
     method: "PATCH",
