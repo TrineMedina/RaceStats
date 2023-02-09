@@ -1,12 +1,15 @@
 import getRaces from "./getRacesAPI";
 
-const parseRaceData = async () => {
+const parseRaceData = async (races) => {
   const racesForTable = [];
   const raceDataForChart = [];
 
-  const updatedRaceList = await getRaces();
+  // const updatedRaceList = await getRaces();
+  const updatedRaceList = races;
+  console.log(updatedRaceList);
 
-  if (updatedRaceList.length < 1) {
+  // if (updatedRaceList.length < 1) {
+  if (!Array.isArray(updatedRaceList)) {
     console.log("no race lists");
     return;
   }

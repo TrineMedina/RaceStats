@@ -1,10 +1,9 @@
-import { useNavigate } from "react-router-dom";
-
 const getRaces = async (user) => {
+  console.log(user);
   const { user_name, password } = user;
   console.log("in api: ", user_name, password);
 
-  const allRaces = await fetch("race/login", {
+  return await fetch("race/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -16,13 +15,9 @@ const getRaces = async (user) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      data ? data : alert("Invalid login information");
       return data;
     })
     .catch((err) => console.log("Error retrieving all races ", err));
-
-  return allRaces;
 };
 
 export default getRaces;

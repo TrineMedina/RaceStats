@@ -24,9 +24,11 @@ function SignIn() {
     console.log("in form: ", formData);
     let data = await getRaces(formData);
     console.log(data);
-    // data
-    //   ? navigate("/Dashboard", { state: data })
-    //   : alert("I'm sorry, that login info is incorrect.");
+    if (data.auth) {
+      navigate("/Dashboard", { state: data.races });
+    } else {
+      alert("Login information is incorrect.");
+    }
   };
 
   return (

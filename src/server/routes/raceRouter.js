@@ -10,7 +10,7 @@ router.post(
   raceController.getRaces,
   (reg, res) => {
     if (res.locals.auth) {
-      return res.status(200).json(res.locals.races);
+      return res.status(200).json(res.locals);
     } else {
       return res.status(400);
     }

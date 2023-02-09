@@ -9,7 +9,7 @@ import StyledButton from "./StyledButton";
 import { useNavigate } from "react-router-dom";
 import { Stack } from "@mui/system";
 
-const RaceTable = () => {
+const RaceTable = (props) => {
   const [raceList, setRaceList] = useState([]);
   const [selectedRace, setSelectedRace] = useState([]);
   const [raceTimes, setRaceTimes] = useState([]);
@@ -21,10 +21,13 @@ const RaceTable = () => {
    * other values that are only for the chart
    */
   const updateRaceList = async () => {
-    const parsedData = await parseRaceData();
-    setRaceList(parsedData.table);
-    setRaceTimes(parsedData.chart);
-    console.log("updating racetimes: ", raceTimes);
+    console.log("props: ", props);
+    const parsedData = await parseRaceData(props);
+    if (parsedData) {
+      setRaceList(parsedData.table);
+      setRaceTimes(parsedData.chart);
+      console.log("updating race times: ", raceTimes);
+    }
   };
 
   useEffect(() => {
@@ -206,7 +209,7 @@ const RaceTable = () => {
         </StyledButton>
         <StyledButton
           onClick={() => {
-            navigate("RaceData");
+            navigate("/RaceData");
           }}
         >
           Add Race
