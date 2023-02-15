@@ -24,8 +24,9 @@ function SignIn() {
     console.log("in form: ", formData);
     let data = await getRaces(formData);
     console.log(data);
-    if (data.auth) {
-      navigate("/Dashboard", { state: data.races });
+    if (data) {
+      console.log("in sign in: ", data);
+      navigate("/Dashboard", { state: data });
     } else {
       alert("Login information is incorrect.");
     }

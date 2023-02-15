@@ -1,6 +1,3 @@
-/**
- * TODO This component is large - look into creating the elements dynamically
- */
 import {
   Autocomplete,
   FormControl,
@@ -44,7 +41,10 @@ const RaceData = (props) => {
     run_hour,
     run_minutes,
     run_seconds,
+    user_id,
   } = props;
+
+  console.log("user id ", user_id);
 
   const [raceData, setRaceData] = useState(props);
   const navigate = useNavigate();
@@ -74,6 +74,7 @@ const RaceData = (props) => {
   }; //End of handleChange
 
   const handleSubmit = () => {
+    console.log("in handleSubmit in RaceData.jsx", raceData);
     let wasCompleted;
 
     if (
@@ -95,7 +96,7 @@ const RaceData = (props) => {
         "Please complete all required fields: race name, year, distance, and swim, bike and run distances"
       );
     }
-    if (wasCompleted) navigate("/Race");
+    if (wasCompleted) navigate("/Dashboard");
   };
 
   return (

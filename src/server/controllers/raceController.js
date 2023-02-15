@@ -3,6 +3,7 @@ const db = require("../models/dbConnection");
 const raceController = {};
 
 raceController.addRace = async (req, res, next) => {
+  console.log("adding race");
   const {
     race_year,
     race_name,
@@ -16,12 +17,13 @@ raceController.addRace = async (req, res, next) => {
     run_distance,
     run_time,
     run_seconds,
+    user_id,
   } = req.body;
 
   // console.log("adding race: ", req.body);
   const query = `INSERT INTO races (race_year, race_name, race_distance, swim_distance, swim_time, swim_seconds,
-                                    bike_distance, bike_time, bike_seconds, run_distance, run_time, run_seconds)
-                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);`;
+                                    bike_distance, bike_time, bike_seconds, run_distance, run_time, run_seconds, user_id)
+                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13);`;
 
   const parameters = [
     race_year,
@@ -147,11 +149,11 @@ raceController.getRaces = async (req, res, next) => {
   console.log("is auth? ", res.locals.auth);
   if (res.locals.auth) {
     const { user_id } = res.locals;
-    const query = "SELECT * FROM races WHERE user_id = $1";
-    const parameter = [user_id];
+    const query = "SELECT * FROM races";
+    // const parameter = [user_id];
 
     await db
-      .query(query, parameter)
+      .query(query)
       .then((data) => {
         console.log("in get races: ", data.rows);
         res.locals.races = data.rows;

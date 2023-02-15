@@ -6,14 +6,17 @@ import parseRaceData from "../services/parseRaceData";
 import deleteRace from "../services/deleteRaceAPI";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import StyledButton from "./StyledButton";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Stack } from "@mui/system";
 
-const RaceTable = (props) => {
+const RaceTable = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [raceList, setRaceList] = useState([]);
   const [selectedRace, setSelectedRace] = useState([]);
   const [raceTimes, setRaceTimes] = useState([]);
-  const navigate = useNavigate();
+  const user_id = location.state.user_id;
 
   /**
    * This function parses the race data that's received from the server. It's needed
@@ -21,12 +24,11 @@ const RaceTable = (props) => {
    * other values that are only for the chart
    */
   const updateRaceList = async () => {
-    console.log("props: ", props);
-    const parsedData = await parseRaceData(props);
+    console.log("props: ", location.state.races);
+    const parsedData = await parseRaceData(location.state.races);
     if (parsedData) {
       setRaceList(parsedData.table);
       setRaceTimes(parsedData.chart);
-      console.log("updating race times: ", raceTimes);
     }
   };
 
@@ -180,8 +182,8 @@ const RaceTable = (props) => {
           maxWidth: 1000,
         }}
         checkboxSelection={true}
-        onSelectionModelChange={(id) => {
-          setSelectedRace([...id]);
+        onSelectionModelChange={(race_id) => {
+          setSelectedRace([...race_id]);
         }}
         selectionModel={selectedRace}
         pagination

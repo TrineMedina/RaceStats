@@ -13,7 +13,8 @@ authController.authUser = async (req, res, next) => {
     .then((data) => {
       if (data.rows[0].password === password) {
         res.locals.auth = true;
-        res.locals.user_id = data.rows.user_id;
+        res.locals.user_id = data.rows[0].user_id;
+        console.log(res.locals);
       } else {
         res.locals.auth = false;
       }
@@ -27,6 +28,11 @@ authController.authUser = async (req, res, next) => {
         },
       });
     });
+};
+
+authController.setCookie = (req, res, next) => {
+  res.cookie("userAccess", "true", { maxAge: 60 });
+  return next();
 };
 
 module.exports = authController;

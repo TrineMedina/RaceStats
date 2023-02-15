@@ -7,6 +7,7 @@ const router = express.Router();
 router.post(
   "/login",
   authController.authUser,
+  authController.setCookie,
   raceController.getRaces,
   (reg, res) => {
     if (res.locals.auth) {

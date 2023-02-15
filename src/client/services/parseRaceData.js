@@ -16,7 +16,7 @@ const parseRaceData = async (races) => {
 
   await updatedRaceList.forEach((race) => {
     const {
-      id,
+      race_id,
       race_name,
       race_year,
       race_distance,
@@ -32,7 +32,7 @@ const parseRaceData = async (races) => {
     } = race;
 
     racesForTable.push({
-      id: `${id}`,
+      id: `${race_id}`,
       race_name,
       race_year,
       race_distance,
@@ -45,7 +45,7 @@ const parseRaceData = async (races) => {
     });
 
     raceDataForChart.push({
-      id,
+      race_id,
       race_name,
       race_year,
       swim_seconds,
